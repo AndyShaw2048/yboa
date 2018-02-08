@@ -1,23 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/css-register-banner/style.css" type="text/css" />
 
-<div style="height: 200px;border-color: #00a7d0;"></div>
+<div id="container">
+    <p></p>
+    <p><a href="#" style="text-decoration: none">Hello</a></p>
+</div>
+
+
+
 
 {{--已经注册成功显示如下页面--}}
 @if($isRegister)
     <?php
         header("Refresh:3;url=/admin");
     ?>
-    <div class="container">
-        <h1>您已成功认证，3s后前往登录页面！</h1>
+    <div class="container text-center">
+        <p style="font-size: 24px">亲爱的{{$username}}，您已成功认证，即将前往登录页面！</p>
         <a href="/logout">取消该账号授权</a>
     </div>
-
 @endif
+
+
 
 {{--没有注册显示如下页面--}}
 @if(!$isRegister)

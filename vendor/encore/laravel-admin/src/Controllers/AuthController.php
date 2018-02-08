@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Controllers;
 
+use App\User;
 use Encore\Admin\Auth\Database\Administrator;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
@@ -109,7 +110,26 @@ class AuthController extends Controller
         return Administrator::form(function (Form $form) {
             $form->display('username', trans('admin.username'));
             $form->text('name', trans('admin.name'))->rules('required');
-            $form->image('avatar', trans('admin.avatar'));
+            if(Admin::user()->inRoles(['minister','officer'])){
+                if(User::department()) {
+                    $form->display('department_id','所属部门')->with(function($value){
+                        switch($value){
+                            case 1:return '技术部';
+                            case 2:return '办公室';
+                            case 3:return '新闻部';
+                            case 4:return '宣传部';
+                        }
+                    });
+                }
+                else{
+                    $form->select('department_id','所属部门')->options([
+                           '1' => '技术部',
+                           '2' => '办公室',
+                           '3' => '新闻部',
+                           '4' => '宣传部'
+                                                                   ])->help('你只有一次修改机会！');
+                }
+            }
             $form->password('password', trans('admin.password'))->rules('confirmed|required');
             $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')
                 ->default(function ($form) {
@@ -125,9 +145,8 @@ class AuthController extends Controller
                     $form->password = bcrypt($form->password);
                 }
             });
-
             $form->saved(function () {
-                admin_toastr(trans('admin.update_succeeded'));
+                admin_toastr('信息更新成功');
 
                 return redirect(admin_base_path('auth/setting'));
             });

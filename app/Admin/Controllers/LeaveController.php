@@ -24,10 +24,7 @@ class LeaveController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
             $content->header('请假系统');
-//            $content->description('description');
-
             $content->body($this->grid());
         });
     }
@@ -42,17 +39,20 @@ class LeaveController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('编辑');
+
+            //判断用户权限
             $isRoles = Admin::user()->inRoles(['officer', 'minister']);
             if(!$isRoles){
                 $content->body('您没有操作权限！');
                 return;
             }
 
+            //该假条是否已被部长审核，审核过则无法修改
             $isEdited = Leave::where('id',$id)
                                ->wherenull('accept_opinion')
                                ->first();
+
             if($isEdited) $content->body($this->form()->edit($id));
             else $content->body($this->editedForm()->edit($id));
         });
@@ -67,9 +67,7 @@ class LeaveController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('编辑假条');
             $content->body($this->form());
         });
     }
@@ -106,10 +104,14 @@ class LeaveController extends Controller
                     return $this->apply_startTime.'<br>'.$this->apply_endTime;
                 });
                 $grid->apply_reason('请假理由');
-                $grid->accept_opinion('部长意见');
+                $grid->accept_opinion('部长意见')->display(function($value){
+                    if(is_null($value)){
+                        return '审核中';
+                    }
+                });
                 $grid->accept_time('处理时间');
 
-//                $grid->disableActions();
+
                 $grid->actions(function ($actions) {
                     $actions->disableDelete();
                 });
@@ -117,6 +119,8 @@ class LeaveController extends Controller
                 $grid->disableExport();
                 $grid->disableFilter();
             }
+
+
             //管理员界面
             else
             {
@@ -154,9 +158,6 @@ class LeaveController extends Controller
                     });
                 });
             }
-//
-//            $grid->created_at();
-//            $grid->updated_at();
         });
     }
 
@@ -168,7 +169,7 @@ class LeaveController extends Controller
     protected function form()
     {
         return Admin::form(Leave::class, function (Form $form) {
-
+            //干事界面
             $isOfficer = Admin::user()->isRole('officer');
             if($isOfficer){
                 $form->display('id', 'ID');
@@ -176,13 +177,7 @@ class LeaveController extends Controller
                 $form->hidden('apply_department')->value(User::department());
                 $form->hidden('apply_name')->value(User::realname());
                 $form->display('apply_name','申请人姓名')->value(User::realname());
-//            $form->text('apply_contact');
-
-                $form->mobile('apply_contact','联系方式')->options(['mask' => '99999999999'])->rules('required|digits:11',[
-                    'required' => '电话号码禁止为空',
-                    'digits' => '电话号码少于11位'
-                ]);;
-//            $form->text('apply_college');
+                $form->mobile('apply_contact','联系方式')->options(['mask' => '999 9999 9999']);
                 $college = [
                     '政治与行政学院' => '政治与行政学院',
                     '音乐学院' => '音乐学院',
@@ -225,12 +220,12 @@ class LeaveController extends Controller
                 $form->textarea('apply_reason','请假理由')->rules('required',[
                     'required' => '请假理由禁止为空',
                 ]);;
-//                $form->display('created_at', 'Created At');
-//                $form->display('updated_at', 'Updated At');
             }
+
+
+            //管理员界面
             $isMinister = Admin::user()->isRole('minister');
             if($isMinister){
-
                 $userid = Admin::user()->id;
                 $form->display('id');
                 $form->display('apply_name');
@@ -248,6 +243,7 @@ class LeaveController extends Controller
 protected function editedForm()
 {
     return Admin::form(Leave::class, function (Form $form) {
+        //干事新增后、部长审核前的干事界面
         $isOfficer = Admin::user()->isRole('officer');
         if($isOfficer){
             $form->display('id', 'ID');
@@ -256,13 +252,10 @@ protected function editedForm()
             $form->text('apply_name','姓名')->rules('required',[
                 'required' => '姓名禁止为空',
             ]);
-//            $form->text('apply_contact');
-
             $form->mobile('apply_contact','联系方式')->options(['mask' => '99999999999'])->rules('required|digits:11',[
                 'required' => '电话号码禁止为空',
                 'digits' => '电话号码少于11位'
             ]);;
-//            $form->text('apply_college');
             $college = [
                 '政治与行政学院' => '政治与行政学院',
                 '音乐学院' => '音乐学院',
@@ -307,9 +300,10 @@ protected function editedForm()
             ]);;
             $form->disableSubmit();
             $form->disableReset();
-//            $form->display('created_at', 'Created At');
-//            $form->display('updated_at', 'Updated At');
+
         }
+
+        //管理员审核后的显示界面
         $isMinister = Admin::user()->isRole('minister');
         if($isMinister){
             $userid = Admin::user()->id;
@@ -320,8 +314,6 @@ protected function editedForm()
             $form->hidden('accept_id')->default($userid);
             $form->hidden('accept_time')->default(date("Y-m-d H:i:s",time()));
         }
-
-
 
     });
 }
