@@ -24,10 +24,7 @@ class ApplyItemController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('易班物资租借系统');
             $content->body($this->grid());
         });
     }
@@ -41,10 +38,7 @@ class ApplyItemController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('易班物资租借系统');
             $array = ApplyItemDetail::getStatus($id);
             if($array[1]>1)
                 $content->body($this->editedForm()->edit($id));
@@ -61,10 +55,7 @@ class ApplyItemController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('易班物资租借系统');
             $content->body($this->form());
         });
     }
@@ -117,12 +108,10 @@ class ApplyItemController extends Controller
 
             $form->display('id', 'ID');
             $form->hidden('apply_id')->default(Admin::user()->id);
-            $form->select('apply_item','申请物品')->options([1=>1]);
+            $form->select('apply_item','申请物品')->options([1=>1,2=>2]);
             $form->text('apply_num','申请数量');
             $form->textarea('apply_reason','申请理由');
-            $form->mobile('apply_contact','联系方式')->options(['mask' => '99999999999'])->help('该物品申请主要负责人联系方式');
-            $form->file('apply_activity','活动计划书')->move('ApplyPrizeDocs');
-            $form->file('apply_prize','奖品申请表')->move('ApplyPrizeDocs');
+            $form->mobile('apply_contact','联系方式')->options(['mask' => '999 9999 9999'])->help('主要负责人联系电话');
             $form->datetime('apply_time','借用时间');
             $form->datetime('return_time','归还时间');
             $form->saved(function(Form $form){

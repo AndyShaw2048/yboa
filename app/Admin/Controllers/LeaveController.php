@@ -39,12 +39,12 @@ class LeaveController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('编辑');
+            $content->header('请假系统');
 
             //判断用户权限
             $isRoles = Admin::user()->inRoles(['officer', 'minister']);
             if(!$isRoles){
-                $content->body('您没有操作权限！');
+                $content->body('您没有审核权限！');
                 return;
             }
 
@@ -66,8 +66,7 @@ class LeaveController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('编辑假条');
+            $content->header('新建假条');
             $content->body($this->form());
         });
     }
@@ -106,8 +105,10 @@ class LeaveController extends Controller
                 $grid->apply_reason('请假理由');
                 $grid->accept_opinion('部长意见')->display(function($value){
                     if(is_null($value)){
-                        return '审核中';
+                        return '<span style="color: #00a7d0;font-weight: bold">待审核</span>';
                     }
+                    if($value == '同意') return '<span style="color: #00a157;font-weight: bold">批准</span>';
+                    else return '<span style="color: #c73300;font-weight: bold">驳回</span>';
                 });
                 $grid->accept_time('处理时间');
 
@@ -168,6 +169,7 @@ class LeaveController extends Controller
      */
     protected function form()
     {
+
         return Admin::form(Leave::class, function (Form $form) {
             //干事界面
             $isOfficer = Admin::user()->isRole('officer');
@@ -226,12 +228,17 @@ class LeaveController extends Controller
             //管理员界面
             $isMinister = Admin::user()->isRole('minister');
             if($isMinister){
-                $userid = Admin::user()->id;
                 $form->display('id');
-                $form->display('apply_name');
-                $form->display('apply_reason');
-                $form->text('accept_opinion');
-                $form->hidden('accept_id')->default($userid);
+                $form->display('apply_name','请假人');
+                $form->display('apply_reason','请假理由');
+                $form->display('请假时间')->with(function () {
+                    return $this->apply_startTime.' - '.$this->apply_endTime;
+                });
+                $form->select('accept_opinion','审核意见')->options([
+                    '批准' => '批准',
+                    '驳回' => '驳回'
+                                                                ]);
+                $form->hidden('accept_id')->default(Admin::user()->id);
                 $form->hidden('accept_time')->default(date("Y-m-d H:i:s",time()));
 
             }
@@ -249,58 +256,16 @@ protected function editedForm()
             $form->display('id', 'ID');
             $form->hidden('apply_id')->value('8562961');
             $form->hidden('apply_department')->value('1');
-            $form->text('apply_name','姓名')->rules('required',[
-                'required' => '姓名禁止为空',
-            ]);
-            $form->mobile('apply_contact','联系方式')->options(['mask' => '99999999999'])->rules('required|digits:11',[
-                'required' => '电话号码禁止为空',
-                'digits' => '电话号码少于11位'
-            ]);;
-            $college = [
-                '政治与行政学院' => '政治与行政学院',
-                '音乐学院' => '音乐学院',
-                '学前与初等教育学院' => '学前与初等教育学院',
-                '新闻传播学院' => '新闻传播学院',
-                '物空学院' => '物空学院',
-                '文学院' => '文学院',
-                '外国语学院' => '外国语学院',
-                '体育学院' => '体育学院',
-                '数学与信息学院' => '数学与信息学院',
-                '生命科学学院' => '生命科学学院',
-                '商学院' => '商学院',
-                '美术学院' => '美术学院',
-                '历史文化学院' => '历史文化学院',
-                '教育学院' => '教育学院',
-                '计算机学院' => '计算机学院',
-                '环境科学与工程学院' => '环境科学与工程学院',
-                '国土资源学院' => '国土资源学院',
-                '管理学院' => '管理学院',
-                '高等职业技术学院' => '高等职业技术学院',
-                '法学院' => '法学院',
-                '电子信息工程学院' => '电子信息工程学院',
-                '化学化工学院' => '化学化工学院',
-            ];
-            $form->select('apply_college','学院')->options($college)->rules('required',[
-                'required' => '学院禁止为空',
-            ]);;
-            $department = [
-                '2017级' => '2017级',
-                '2016级' => '2016级',
-                '2015级' => '2015级',
-                '2014级' => '2014级',
-            ];
-            $form->select('apply_grade','年级')->options($department)->rules('required',[
-                'required' => '年级禁止为空',
-            ]);;
-            $form->datetimeRange('apply_startTime', 'apply_endTime', '请假时间')->rules('required',[
-                'required' => '请假时间禁止为空',
-            ]);;
-            $form->textarea('apply_reason','请假理由')->rules('required',[
-                'required' => '请假理由禁止为空',
-            ]);;
+            $form->display('apply_name','姓名');
+            $form->display('apply_contact','联系方式');
+            $form->display('apply_college','学院');
+            $form->display('apply_grade','年级');
+            $form->display('请假时间')->with(function () {
+                return $this->apply_startTime.' - '.$this->apply_endTime;
+            });
+            $form->display('apply_reason','请假理由');
             $form->disableSubmit();
             $form->disableReset();
-
         }
 
         //管理员审核后的显示界面

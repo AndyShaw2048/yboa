@@ -24,10 +24,7 @@ class PrizeDocController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('奖品申请审核系统');
-            $content->description('description');
-
+            $content->header('活动奖品申请系统');
             $content->body($this->grid());
         });
     }
@@ -41,11 +38,13 @@ class PrizeDocController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
+            $content->header('活动奖品申请系统');
+            $isEdited = PrizeDoc::getStatus($id);
+            if(is_null($isEdited))
+                $content->body($this->form()->edit($id));
+            else
+                $content->body($this->editedForm()->edit($id));
 
-            $content->header('header');
-            $content->description('description');
-
-            $content->body($this->form()->edit($id));
         });
     }
 
@@ -57,10 +56,7 @@ class PrizeDocController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('活动奖品申请系统');
             $content->body($this->form());
         });
     }
@@ -73,8 +69,13 @@ class PrizeDocController extends Controller
     protected function grid()
     {
         return Admin::grid(PrizeDoc::class, function (Grid $grid) {
-            if(Admin::user()->isRole('college'))
+            if(Admin::user()->isRole('college')){
                 $grid->model()->where('apply_id',Admin::user()->id);
+                $grid->disableRowSelector();
+                $grid->actions(function ($actions) {
+                    $actions->disableDelete();
+                });
+            }
             $grid->id('编号');
             $grid->apply_id('申请单位')->display(function($id){
                    return User::getRealName($id);
@@ -106,29 +107,70 @@ class PrizeDocController extends Controller
     protected function form()
     {
         return Admin::form(PrizeDoc::class, function (Form $form) {
+            //学院负责人界面
             if(Admin::user()->isRole('college'))
             {
-                $form->display('id', 'ID');
                 $form->hidden('apply_id')->default(Admin::user()->id);
                 $form->text('activity_name','活动名称');
-                $form->mobile('apply_contact','联系方式');
+                $form->mobile('apply_contact','联系方式')->options(['mask'=>'999 9999 9999']);
                 $form->file('doc_activity','活动计划书')->move('ApplyPrizeDocs')->uniqueName();
                 $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName();
                 $form->hidden('apply_time')->default(date("Y-m-d h:i:s",time()));
                 $form->textarea('apply_note','备注');
-                $form->display('created_at', 'Created At');
-                $form->display('updated_at', 'Updated At');
             }
+
+
+            //管理员审核界面
             if(Admin::user()->isRole('administrator'))
             {
                 $form->display('apply_id','申请单位')->with(function($id){
                    return User::getRealName($id);
                 });
                 $form->display('activity_name','活动名称');
+                $form->display('apply_note','申请备注');
                 $form->select('accept_opinion','审核意见')->options([
                     '审核通过' => '审核通过',
                     '审核通过失败' => '审核通过失败',
                     '其他处理结果' => '其他处理结果',
+                                                                ]);
+                $form->textarea('accept_note','备注');
+                $form->hidden('accept_id')->default(Admin::user()->id);
+                $form->hidden('accept_time')->default(date('Y-m-d h:i:s',time()));
+            }
+        });
+    }
+
+
+    //审核后的编辑界面
+    protected function editedForm()
+    {
+        return Admin::form(PrizeDoc::class, function (Form $form) {
+            //学院负责人界面
+            if(Admin::user()->isRole('college'))
+            {
+                $form->display('apply_id');
+                $form->text('activity_name','活动名称');
+                $form->display('apply_contact','联系方式');
+                $form->display('apply_note','备注');
+                $form->display('accept_opinion','审核意见');
+                $form->display('accept_note','备注');
+                $form->disableSubmit();
+                $form->disableReset();
+            }
+
+
+            //管理员审核界面
+            if(Admin::user()->isRole('administrator'))
+            {
+                $form->display('apply_id','申请单位')->with(function($id){
+                    return User::getRealName($id);
+                });
+                $form->display('activity_name','活动名称');
+                $form->display('apply_note','申请备注');
+                $form->select('accept_opinion','审核意见')->options([
+                                                                    '审核通过' => '审核通过',
+                                                                    '审核通过失败' => '审核通过失败',
+                                                                    '其他处理结果' => '其他处理结果',
                                                                 ]);
                 $form->textarea('accept_note','备注');
                 $form->hidden('accept_id')->default(Admin::user()->id);

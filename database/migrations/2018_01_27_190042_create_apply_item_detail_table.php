@@ -15,8 +15,6 @@ class CreateApplyItemDetailTable extends Migration
     {
         Schema::create('apply_item_detail', function (Blueprint $table) {
             $table->increments('id');
-//            $table->unsignedInteger('apply_item_detail_id')->primary();
-//            $table->primary('applyitem_id');
             $table->unsignedInteger('apply_item_id');
             $table->unsignedInteger('accept_1_id')->nullable();
             $table->string('accept_1_opn')->nullable();

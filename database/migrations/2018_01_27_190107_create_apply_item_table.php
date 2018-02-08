@@ -22,7 +22,6 @@ class CreateApplyItemTable extends Migration
             $table->string('apply_contact');
             $table->string('apply_time');
             $table->string('return_time');
-//            $table->unsignedInteger('accept_id');
             $table->string('accept_opinion')->nullable()->default('审核中');
             $table->string('accept_time')->nullable();
             $table->string('accept_note')->nullable();

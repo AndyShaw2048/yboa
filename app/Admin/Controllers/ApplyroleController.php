@@ -26,10 +26,7 @@ class ApplyroleController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('申请认证');
             $content->body($this->grid());
         });
     }
@@ -43,12 +40,7 @@ class ApplyroleController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('header');
-            $content->description('description');
-
-
-
+            $content->header('申请认证');
             $isAdmin = Admin::user()->isRole('administrator','manager');
             if($isAdmin)
             {
@@ -75,10 +67,7 @@ class ApplyroleController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('申请认证');
             $content->body($this->form());
         });
     }
@@ -92,10 +81,8 @@ class ApplyroleController extends Controller
     {
         return Admin::grid(applyRole::class, function (Grid $grid) {
 
-
-
-            $grid->id('流水号ID');
-            $grid->apply_id('认证ID')->display(function($id){
+            $grid->id('编号');
+            $grid->apply_id('认证账号')->display(function($id){
                 return User::getRealName($id);
             });
             $grid->apply_role('认证角色')->display(function($apply_role){
@@ -121,16 +108,11 @@ class ApplyroleController extends Controller
                 $grid->model()->where('apply_id',Admin::user()->id);
                 $grid->disableFilter();
                 $grid->disableExport();
-
-//                $grid->disableActions();
-
             }
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
             });
             $grid->disableRowSelector();
-//            $grid->created_at();
-//            $grid->updated_at();
         });
     }
 
@@ -142,7 +124,6 @@ class ApplyroleController extends Controller
     protected function form()
     {
         return Admin::form(applyRole::class, function (Form $form) {
-
             $form->display('id', 'ID');
             $form->display('apply_id','认证ID')->value(Admin::user()->id);
             $form->hidden('apply_id')->default(Admin::user()->id);
@@ -161,17 +142,16 @@ class ApplyroleController extends Controller
             ]);
             $form->hidden('accept_opinion');
             $form->hidden('accept_time');
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
+
             $form->saved(function ($form) {
                 $opinion = $form->model()->accept_opinion;
                 $userid = $form->model()->apply_id;
                 $role = $form->model()->apply_role;
                 if($opinion == '审核成功'){
-                    $a = Role::editRoles($userid,$role);
-                    if(!$a){
+                    $r = Role::editRoles($userid,$role);
+                    if(!$r){
                         $error = new MessageBag([
-                                                    'message' => '写入数据库时失败',
+                                     'message' => '写入数据库时失败,请联系网站管理员',
                                                 ]);
                         return back()->with(compact('error'));
                     }
@@ -202,8 +182,6 @@ class ApplyroleController extends Controller
             ]);
 
             $form->hidden('accept_time')->default(date("Y-m-d h:m:s",time()));
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
 
         });
     }
@@ -223,8 +201,6 @@ class ApplyroleController extends Controller
                 }
             });
             $form->display('created_at','申请时间');
-//            $form->display('created_at', 'Created At');
-//            $form->display('updated_at', 'Updated At');
             $form->disableSubmit();
 
         });

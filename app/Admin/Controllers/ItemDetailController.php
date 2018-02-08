@@ -27,10 +27,7 @@ class ItemDetailController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('Item Details');
-            $content->description('description');
-
+            $content->header('仓库操作详细记录');
             $content->body($this->grid());
         });
     }
@@ -44,10 +41,7 @@ class ItemDetailController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('仓库操作详细记录');
             $content->body($this->form()->edit($id));
         });
     }
@@ -60,10 +54,7 @@ class ItemDetailController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('仓库操作详细记录');
             $content->body($this->form());
         });
     }
@@ -76,36 +67,23 @@ class ItemDetailController extends Controller
     protected function grid()
     {
         return Admin::grid(ItemDetail::class, function (Grid $grid) {
-
             $grid->id('流水号')->sortable();
             $grid->item_id('物品名称')->display(function($value){
-
                 $inventory = ApiController::getInventoryList();
                 foreach ($inventory as $item) {
-                    if($value = $item['id'])return $item['text'];
+                    if($value == $item['id'])return $item['text'];
                 }
             });
             $grid->before('原始数量');
             $grid->changed('改变数量');
             $grid->after('最终数量');
-            $grid->operate_id('操作人ID')->display(function($value){
+            $grid->operate_id('操作人')->display(function($value){
                 return \App\User::realname($value);
             });
             $grid->operate_reason('操作理由');
             $grid->operate_time('操作时间');
 
-
-            $grid->actions(function ($actions) {
-                $actions->disableDelete();
-                $actions->disableEdit();
-            });
-
-
-
-
-
-//            $grid->created_at();
-//            $grid->updated_at();
+            $grid->disableActions();
         });
     }
 
@@ -119,17 +97,16 @@ class ItemDetailController extends Controller
         return Admin::form(ItemDetail::class, function (Form $form) {
 
             $form->display('id', 'ID');
-            $form->select('item_id')->options('/api/inventory');
-            $form->number('changed');
+            $form->select('item_id','物品名称')->options('/api/inventory');
+            $form->number('changed','改变数量');
 
             $form->hidden('before')->default(0);
             $form->hidden('operate_id')->default(Admin::user()->id);
-            $form->textarea('operate_reason');
+            $form->textarea('operate_reason','操作理由');
             $form->hidden('operate_time')->default(date("Y-m-d h:m:s",time()));
             $form->hidden('after')->default(0);
 
-
-
+            //实现两表同时更新
             $form->saved(function(Form $form){
                 $before = Inventory::getBefore($form->model()->item_id);
                 $after = $before + $form->model()->changed;

@@ -23,10 +23,7 @@ class InventoryController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('物品库存');
             $content->body($this->grid());
         });
     }
@@ -40,10 +37,7 @@ class InventoryController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('物品库存');
             $content->body($this->form()->edit($id));
         });
     }
@@ -56,10 +50,7 @@ class InventoryController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('物品库存');
             $content->body($this->form());
         });
     }
@@ -72,16 +63,11 @@ class InventoryController extends Controller
     protected function grid()
     {
         return Admin::grid(Inventory::class, function (Grid $grid) {
-
             $grid->id('编号');
             $grid->name('名称');
-            $grid->image('图片')->display(function($value){
-                return '<img src='.url("uploads/".$value).' style="width:200px;">';
-            });
+            $grid->image('照片')->image('http://oa.com/uploads/',50,50);
             $grid->stocks('库存量');
-
-//            $grid->created_at();
-//            $grid->updated_at();
+            $grid->description('物品描述');
         });
     }
 
@@ -93,17 +79,12 @@ class InventoryController extends Controller
     protected function form()
     {
         return Admin::form(Inventory::class, function (Form $form) {
-
-            $form->display('id', 'ID');
             $form->text('name','物品名称');
-            $form->text('description','物品描述');
-//            $form->text('image','物品照片');
+            $form->textarea('description','物品描述');
 
             // 修改上传目录
             $form->image('image')->move('inventoryImages')->uniqueName();
             $form->number('stocks','物品数量');
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
         });
     }
 }

@@ -26,10 +26,7 @@ class ApplyItemDetailController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('物品借用审核系统');
-            $content->description('description');
-
+            $content->header('易班物资租借审核系统');
             $content->body($this->grid());
         });
     }
@@ -43,9 +40,8 @@ class ApplyItemDetailController extends Controller
     public function edit($id)
     {
         return Admin::content(function (Content $content) use ($id) {
-
-            $content->header('header');
-            $content->description('description');
+            $content->header('易班物资租借审核系统');
+            $content->description('注意：审核之前，请认真查看之前是否已通过审核！');
             $array = ApplyItemDetail::getStatusOnId($id);
             $content->body($this->editedForm($array)->edit($id));
         });
@@ -59,10 +55,7 @@ class ApplyItemDetailController extends Controller
     public function create()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('易班物资租借审核系统');
             $content->body($this->form());
         });
     }
@@ -87,18 +80,17 @@ class ApplyItemDetailController extends Controller
                 return "<span title='$text'>$less</span>";
             });;
             $grid->column('ApplyItem.apply_contact', '联系电话');
-            $grid->apply_activity('活动计划书');
             $grid->column('ApplyItem.apply_time', '开始时间');
             $grid->column('ApplyItem.return_time', '结束时间');
             $grid->status('状态')->display(function($value){
                 $array = explode('|',$value);
                 if($array[1] == 5){
-                    return '已完成';
+                    return '<span style="color: #00a65a">已完成</span>';
                 }
                 else
-                    return '审核中';
+                    return '<span style="color: #c78607">审核中 | 第'.$array[1].'环节</span>';
             });
-
+            $grid->disableCreateButton();
         });
     }
 
