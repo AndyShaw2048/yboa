@@ -149,11 +149,12 @@ class PrizeDocController extends Controller
             if(Admin::user()->isRole('college'))
             {
                 $form->display('apply_id');
-                $form->text('activity_name','活动名称');
+                $form->display('activity_name','活动名称');
                 $form->display('apply_contact','联系方式');
-                $form->display('apply_note','备注');
+                $form->display('apply_note','申请备注');
                 $form->display('accept_opinion','审核意见');
-                $form->display('accept_note','备注');
+                $form->display('accept_note','审核备注');
+                $form->display('accept_time','审核时间');
                 $form->disableSubmit();
                 $form->disableReset();
             }
@@ -162,19 +163,18 @@ class PrizeDocController extends Controller
             //管理员审核界面
             if(Admin::user()->isRole('administrator'))
             {
-                $form->display('apply_id','申请单位')->with(function($id){
-                    return User::getRealName($id);
-                });
+                $form->display('apply_id');
                 $form->display('activity_name','活动名称');
+                $form->display('apply_contact','联系方式');
                 $form->display('apply_note','申请备注');
-                $form->select('accept_opinion','审核意见')->options([
-                                                                    '审核通过' => '审核通过',
-                                                                    '审核通过失败' => '审核通过失败',
-                                                                    '其他处理结果' => '其他处理结果',
-                                                                ]);
-                $form->textarea('accept_note','备注');
-                $form->hidden('accept_id')->default(Admin::user()->id);
-                $form->hidden('accept_time')->default(date('Y-m-d h:i:s',time()));
+                $form->display('accept_id','经办人')->with(function($value){
+                    return User::getRealName($value);
+                });
+                $form->display('accept_opinion','审核意见');
+                $form->display('accept_note','审核备注');
+                $form->display('accept_time','审核时间');
+                $form->disableSubmit();
+                $form->disableReset();
             }
         });
     }
