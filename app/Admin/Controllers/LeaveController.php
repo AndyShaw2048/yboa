@@ -85,7 +85,7 @@ class LeaveController extends Controller
             if($isOfficer)
             {
                 $grid->model()->where('apply_id',Admin::user()->id);
-                $grid->id('ID')->sortable();
+                $grid->id('编号')->sortable();
                 $grid->apply_name('申请人');
                 $grid->apply_contact('联系方式');
                 $grid->apply_department('部门')->display(function ($apply_department){
@@ -127,7 +127,7 @@ class LeaveController extends Controller
             {
                 if(Admin::user()->isRole('minister'))
                     $grid->model()->where('apply_department',User::department());
-                $grid->id('ID')->sortable();
+                $grid->id('编号')->sortable();
                 $grid->apply_name('申请人');
                 $grid->apply_contact('联系方式');
                 $grid->apply_department('部门')->display(function ($apply_department){
@@ -174,7 +174,7 @@ class LeaveController extends Controller
             //干事界面
             $isOfficer = Admin::user()->isRole('officer');
             if($isOfficer){
-                $form->display('id', 'ID');
+                $form->display('id', '编号');
                 $form->hidden('apply_id')->value(Admin::user()->id);
                 $form->hidden('apply_department')->value(User::department());
                 $form->hidden('apply_name')->value(User::realname());

@@ -124,8 +124,7 @@ class ApplyroleController extends Controller
     protected function form()
     {
         return Admin::form(applyRole::class, function (Form $form) {
-            $form->display('id', 'ID');
-            $form->display('apply_id','认证ID')->value(Admin::user()->id);
+            $form->display('apply_id','认证账号')->value(User::getRealName(Admin::user()->id));
             $form->hidden('apply_id')->default(Admin::user()->id);
             $roles = [
                 2 => '管理员',
@@ -137,8 +136,8 @@ class ApplyroleController extends Controller
                  ->help('请如实选择身份，否则将认证失败！')->rules('required',[
                     'required' => '请选择您要认证的角色'
                 ]);
-            $form->textarea('apply_reason','认证理由')->rules('required',[
-                'required' => '请填写认证理由',
+            $form->textarea('apply_reason','认证说明')->rules('required',[
+                'required' => '请填写认证说明',
             ]);
             $form->hidden('accept_opinion');
             $form->hidden('accept_time');

@@ -38,7 +38,7 @@ class InventoryController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
             $content->header('物品库存');
-            $content->body($this->form()->edit($id));
+            $content->body($this->editedForm()->edit($id));
         });
     }
 
@@ -84,7 +84,24 @@ class InventoryController extends Controller
 
             // 修改上传目录
             $form->image('image')->move('inventoryImages')->uniqueName();
-            $form->number('stocks','物品数量');
+            if(!isset($id))
+                $form->number('stocks','物品数量');
+            else
+                $form->display('stocks','物品数量');
+
+        });
+    }
+
+    protected function editedForm()
+    {
+        return Admin::form(Inventory::class, function (Form $form) {
+            $form->text('name','物品名称');
+            $form->textarea('description','物品描述');
+
+            // 修改上传目录
+            $form->image('image')->move('inventoryImages')->uniqueName();
+            $form->display('stocks','物品数量');
+
         });
     }
 }

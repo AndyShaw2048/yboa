@@ -92,6 +92,11 @@ class RegisterController extends Controller
         $yb_username = $result['info']['yb_username'];
         $yb_userhead = $result['info']['yb_userhead'];
 
+        //判断用户名是否重复
+        $RegisterUser = Register::where('username',$request->username)->first();
+        if($RegisterUser)
+            return back()->withInput()->withErrors('该用户名已被注册')->with('isRegister',false);
+
         //信息存入数据库
         $RegisterUser = new Register();
         $RegisterUser->username = $request->username;
@@ -108,7 +113,7 @@ class RegisterController extends Controller
         $fresher = User::getUserid($yb_userid);
         Role::saveRoles($fresher);
 
-        return view('register',['isRegister'=>true]);
+        return view('register',['isRegister'=>true,'username'=>$yb_username]);
     }
 
     /**

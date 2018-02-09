@@ -71,10 +71,15 @@ class PrizeDocController extends Controller
         return Admin::grid(PrizeDoc::class, function (Grid $grid) {
             if(Admin::user()->isRole('college')){
                 $grid->model()->where('apply_id',Admin::user()->id);
+                $grid->disableExport();
+                $grid->disableFilter();
                 $grid->disableRowSelector();
                 $grid->actions(function ($actions) {
                     $actions->disableDelete();
                 });
+            }
+            else{
+                $grid->disableCreateButton();
             }
             $grid->id('编号');
             $grid->apply_id('申请单位')->display(function($id){
@@ -91,9 +96,13 @@ class PrizeDocController extends Controller
                 return "<a href='$value' target='_blank'>点击下载</a>";
             });;
             $grid->apply_time('申请时间');
-            $grid->accept_opinion('审核意见')->display(function($value){
-                $r = is_null($value) ? '审核中' :  $value;
-                return $r;
+            $grid->accept_opinion('审核意见')->display(function($r){
+                if(is_null($r))
+                    return '审核中';
+                if($r == '审核通过')
+                    return '<span style="color: #00a65a">审核通过</span>';
+                else
+                    return '<span style="color: indianred">'.$r.'</span>';
             });
             $grid->accept_note('备注');
         });
@@ -148,7 +157,9 @@ class PrizeDocController extends Controller
             //学院负责人界面
             if(Admin::user()->isRole('college'))
             {
-                $form->display('apply_id');
+                $form->display('apply_id','申请单位')->with(function($id){
+                    return User::getRealName($id);
+                });
                 $form->display('activity_name','活动名称');
                 $form->display('apply_contact','联系方式');
                 $form->display('apply_note','申请备注');
@@ -163,7 +174,9 @@ class PrizeDocController extends Controller
             //管理员审核界面
             if(Admin::user()->isRole('administrator'))
             {
-                $form->display('apply_id');
+                $form->display('apply_id','申请单位')->with(function($id){
+                    return User::getRealName($id);
+                });;
                 $form->display('activity_name','活动名称');
                 $form->display('apply_contact','联系方式');
                 $form->display('apply_note','申请备注');

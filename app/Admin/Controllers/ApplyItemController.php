@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\ApplyItem;
 
 use App\ApplyItemDetail;
+use App\User;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
@@ -75,7 +76,9 @@ class ApplyItemController extends Controller
                 $grid->disableFilter();
             }
             $grid->id('编号')->sortable();
-            $grid->apply_id('申请人');
+            $grid->apply_id('申请单位')->display(function($value){
+                return User::getRealName($value);
+            });
             $grid->apply_item('申请物品');
             $grid->apply_num('申请数量');
             $grid->apply_time('开始时间');
@@ -106,7 +109,7 @@ class ApplyItemController extends Controller
     {
         return Admin::form(ApplyItem::class, function (Form $form) {
 
-            $form->display('id', 'ID');
+            $form->display('id', '编号');
             $form->hidden('apply_id')->default(Admin::user()->id);
             $form->select('apply_item','申请物品')->options([1=>1,2=>2]);
             $form->text('apply_num','申请数量');
@@ -126,8 +129,10 @@ class ApplyItemController extends Controller
     {
         return Admin::form(ApplyItem::class, function (Form $form) {
 
-            $form->display('id', 'ID');
-            $form->display('apply_id');
+            $form->display('id', '编号');
+            $form->display('apply_id','申请单位')->with(function($id){
+                return User::getRealName($id);
+            });
             $form->display('apply_item','申请物品');
             $form->display('apply_num','申请数量');
             $form->display('apply_reason','申请理由');
