@@ -15,9 +15,8 @@ class PPController extends Controller
 
     public function index()
     {
-        return view('pp');
-//        return Admin::content(function (Content $content) {
-//            $content->body(view('pp'));
-//        });
+        return Admin::content(function (Content $content) {
+            $content->body(view('pp'));
+        });
     }
 }

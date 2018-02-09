@@ -18,6 +18,5 @@ Route::group([
     $router->resource('applyitem', ApplyItemController::class);
     $router->resource('applyitemdetail', ApplyItemDetailController::class);
     $router->resource('prizedoc', PrizeDocController::class);
-//    $router->resource('pp', PPController::class);
-    $router->any('pp','PPController@index');
+    $router->resource('pp', PPController::class);
 });
