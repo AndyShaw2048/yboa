@@ -25,11 +25,14 @@
       <file leaf-file-name="PrizeDocController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Admin/Controllers/PrizeDocController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46650717">
-              <caret line="189" column="23" selection-start-line="189" selection-start-column="23" selection-end-line="189" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.43540668">
+              <caret line="136" column="71" selection-start-line="136" selection-start-column="71" selection-end-line="136" selection-end-column="71" />
               <folding>
-                <marker date="1518233627319" expanded="true" signature="3127:3141" placeholder="..." />
-                <marker date="1518233627319" expanded="true" signature="3219:3235" placeholder="..." />
+                <marker date="1518243222141" expanded="true" signature="3127:3141" placeholder="..." />
+                <marker date="1518243222141" expanded="true" signature="3219:3235" placeholder="..." />
+                <marker date="1518243222141" expanded="true" signature="4381:4409" placeholder="..." />
+                <marker date="1518243222141" expanded="true" signature="6217:6249" placeholder="..." />
+                <marker date="1518243222141" expanded="true" signature="6395:6427" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -71,8 +74,8 @@
         <option value="$PROJECT_DIR$/resources/views/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_01_29_152609_create_prizedocs_table.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Admin/Controllers/PrizeDocController.php" />
         <option value="$PROJECT_DIR$/storage/logs/laravel.log" />
+        <option value="$PROJECT_DIR$/app/Admin/Controllers/PrizeDocController.php" />
       </list>
     </option>
   </component>
@@ -226,18 +229,18 @@
     <property name="SearchEverywhereHistoryKey" value="setting&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="I:\website\yboa\public\uploads\ApplyPrizeDocs" />
+      <recent name="I:\website\yboa\public\js" />
+      <recent name="I:\website\yboa\public\css" />
+      <recent name="I:\website\yboa\public\imgs" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="I:\website\yboa\public\uploads\ApplyPrizeDocs" />
       <recent name="I:\website\yboa\resources\views" />
       <recent name="I:\website\yibanoa" />
       <recent name="I:\website\yibanoa\resources" />
       <recent name="I:\website\yibanoa\public" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="I:\website\yboa\public\uploads\ApplyPrizeDocs" />
-      <recent name="I:\website\yboa\public\js" />
-      <recent name="I:\website\yboa\public\css" />
-      <recent name="I:\website\yboa\public\imgs" />
     </key>
   </component>
   <component name="RunManager">
@@ -681,11 +684,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Admin/Controllers/PrizeDocController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46650717">
-          <caret line="189" column="23" selection-start-line="189" selection-start-column="23" selection-end-line="189" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.43540668">
+          <caret line="136" column="71" selection-start-line="136" selection-start-column="71" selection-end-line="136" selection-end-column="71" />
           <folding>
-            <marker date="1518233627319" expanded="true" signature="3127:3141" placeholder="..." />
-            <marker date="1518233627319" expanded="true" signature="3219:3235" placeholder="..." />
+            <marker date="1518243222141" expanded="true" signature="3127:3141" placeholder="..." />
+            <marker date="1518243222141" expanded="true" signature="3219:3235" placeholder="..." />
+            <marker date="1518243222141" expanded="true" signature="4381:4409" placeholder="..." />
+            <marker date="1518243222141" expanded="true" signature="6217:6249" placeholder="..." />
+            <marker date="1518243222141" expanded="true" signature="6395:6427" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -132,7 +132,8 @@ class PrizeDocController extends Controller
                     ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件4 易班学生工作站活动计划书模版.doc').'" target="_blank">点击下载活动计划书模板</a>');
                 $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName()
                      ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件2 西华师范大学易班学生工作站奖品申请表2017.docx').'" target="_blank">点击下载奖品申请表模板</a>');
-                $form->hidden('doc_summary');
+                $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()
+                     ->help('<span style="color: red;font-weight: bold">活动结束后请及时上传</span>');
                 $form->hidden('apply_time')->default(date("Y-m-d h:i:s",time()));
                 $form->textarea('apply_note','备注');
             }
@@ -175,6 +176,12 @@ class PrizeDocController extends Controller
                 $form->display('accept_opinion','审核意见');
                 $form->display('accept_note','审核备注');
                 $form->display('accept_time','审核时间');
+                $form->display('doc_activity','活动计划书')->with(function(){
+                    return '<span style="color: #00a157;font-weight: bold">已上传</span>';
+                });
+                $form->display('doc_prize','奖品申请表')->with(function(){
+                    return '<span style="color: #00a157;font-weight: bold">已上传</span>';
+                });
                 $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()
                      ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件5 易班学生工作站总结书模版.doc').'" target="_blank">点击下载活动总结书模板</a>');
 
