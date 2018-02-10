@@ -31,9 +31,9 @@ class User extends Model
     {
         $department = User::where('id',Admin::user()->id)->get();
         foreach($department as $department_id){
-            if($department_id->avatar == null)
-                return 'http://oa.com/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg';
-            return ($department_id->avatar) ;
+//            if($department_id->avatar == null)
+                return 'https://oa.xhsdyb.cn/vendor/laravel-admin/AdminLTE/dist/img/user2-160x160.jpg';
+//            return ($department_id->avatar) ;
         }
 
     }

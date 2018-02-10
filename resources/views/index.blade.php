@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href='http://cdn.webfont.youziku.com/webfonts/nomal/114292/19673/5a7d2b5cf629dc0a507de5f0.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdn.webfont.youziku.com/webfonts/nomal/114292/19673/5a7d2b5cf629dc0a507de5f0.css' rel='stylesheet' type='text/css' />
     <title>西华师大易班OA系统</title>
     <meta charset="UTF-8">
 
@@ -69,13 +69,13 @@
 
 
 <!-- Main library -->
-<script src="http://cdn.bootcss.com/three.js/r68/three.min.js"></script>
+<script src="https://cdn.bootcss.com/three.js/r68/three.min.js"></script>
 <!-- Helpers -->
 <script src="js/js-index/projector.js"></script>
 <script src="js/js-index/canvas-renderer.js"></script>
 <!-- Visualitzation adjustments -->
 <script src="js/js-index/3d-lines-animation.js"></script>
-<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/js-index/color.js"></script>
 </body>
 </html>

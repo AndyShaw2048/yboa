@@ -5,17 +5,17 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name' => 'Laravel-admin',
+    'name' => '西华师大易班OA系统',
 
     /*
      * Logo in admin panel header.
      */
-    'logo' => '<b>Laravel</b> admin',
+    'logo' => '<b>西华师大易班</b>',
 
     /*
      * Mini-logo in admin panel header.
      */
-    'logo-mini' => '<b>La</b>',
+    'logo-mini' => '<b>YB</b>',
 
     /*
      * Route configuration.
@@ -145,7 +145,7 @@ return [
     /*
      * Version displayed in footer.
      */
-    'version' => '1.5.x-dev',
+    'version' => '1.0.0',
 
     /*
      * Settings for extensions.
