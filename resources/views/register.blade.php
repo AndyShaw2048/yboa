@@ -29,7 +29,7 @@
 {{--没有注册显示如下页面--}}
 @if(!$isRegister)
     <div class="container">
-        <div style="width: 600px;margin: 0 auto;">
+        <div style="width: 410px;margin: 0 auto;">
             {{--填写后提示错误信息--}}
             @if(count($errors)>0)
                 <div class="alert alert-warning">
@@ -43,39 +43,45 @@
             <form class="form-horizontal" action="/register" method="post">
                 {{csrf_field()}}
                 <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">*用户名</label>
-                    <div class="col-sm-10">
+                    <label for="username" class="col-sm-3 control-label">*用户名</label>
+                    <div class="col-sm-9">
                         <input type="text" name="username" class="form-control" id="username" placeholder="请填入11位手机号码">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">*密码</label>
-                    <div class="col-sm-10">
+                    <label for="password" class="col-sm-3 control-label">*密码</label>
+                    <div class="col-sm-9">
                         <input type="password" name="password" class="form-control" id="password" placeholder="请输入6-20位的密码">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="confirm_password" class="col-sm-2 control-label">*确认密码</label>
-                    <div class="col-sm-10">
+                    <label for="confirm_password" class="col-sm-3 control-label">*确认密码</label>
+                    <div class="col-sm-9">
                         <input type="password" name="password_confirmation" class="form-control" id="confirm_password" placeholder="请再次输入密码">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="col-sm-2 control-label">*联系电话</label>
-                    <div class="col-sm-10">
+                    <label for="phone" class="col-sm-3 control-label">*联系电话</label>
+                    <div class="col-sm-9">
                         <input type="text" name="telephone" class="form-control" id="phone" placeholder="请输入有效联系电话">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="email" class="col-sm-2 control-label">电子邮箱</label>
-                    <div class="col-sm-10">
+                    <label for="email" class="col-sm-3 control-label">电子邮箱</label>
+                    <div class="col-sm-9">
                         <input type="email" name="email" class="form-control" id="email" placeholder="">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="qq" class="col-sm-2 control-label">QQ号码</label>
-                    <div class="col-sm-10">
+                    <label for="qq" class="col-sm-3 control-label">QQ号码</label>
+                    <div class="col-sm-9">
                         <input type="text" name="qq" class="form-control" id="qq" placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="qq" class="col-sm-3 control-label">验证码</label>
+                    <div class="col-sm-9">
+                        {!! Geetest::render() !!}
                     </div>
                 </div>
                 <div class="form-group text-center">

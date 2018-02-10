@@ -568,6 +568,59 @@
         ]
     },
     {
+        "name": "germey/geetest",
+        "version": "v3.0.6",
+        "version_normalized": "3.0.6.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Germey/LaravelGeetest.git",
+            "reference": "22a5e06426a91ca0551666ac171e6fd8df2cf7fb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/Germey/LaravelGeetest/22a5e06426a91ca0551666ac171e6fd8df2cf7fb.zip",
+            "reference": "22a5e06426a91ca0551666ac171e6fd8df2cf7fb",
+            "shasum": ""
+        },
+        "require": {
+            "laravel/framework": "5.*",
+            "php": ">=5.6.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "dev-master",
+            "phpunit/phpunit": "~4.1"
+        },
+        "time": "2018-01-24T04:01:35+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Germey\\Geetest\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Germey",
+                "email": "cqc@cuiqingcai.com"
+            }
+        ],
+        "description": "Geetest Package for Laravel5",
+        "keywords": [
+            "Germey",
+            "geetest",
+            "laravel"
+        ]
+    },
+    {
         "name": "hamcrest/hamcrest-php",
         "version": "v2.0.0",
         "version_normalized": "2.0.0.0",

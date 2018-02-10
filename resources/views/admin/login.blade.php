@@ -28,11 +28,11 @@
     <a href="{{ admin_base_path('/') }}"><b>{{config('admin.name')}}</b></a>
   </div>
   <!-- /.login-logo -->
-  <div class="login-box-body">
+  <div class="login-box-body " style="width:340px">
     <p class="login-box-msg">{{ trans('admin.login') }}</p>
 
-    <form action="{{ admin_base_path('auth/login') }}" method="post">
-      <div class="form-group has-feedback {!! !$errors->has('username') ?: 'has-error' !!}">
+    <form action="{{ admin_base_path('auth/login') }}" method="post" style="width: 300px">
+      <div class="form-group has-feedback {!! !$errors->has('username') ?: 'has-error' !!}"  style="width: 300px">
 
         @if($errors->has('username'))
           @foreach($errors->get('username') as $message)
@@ -43,7 +43,7 @@
         <input type="input" class="form-control" placeholder="{{ trans('admin.username') }}" name="username" value="{{ old('username') }}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback {!! !$errors->has('password') ?: 'has-error' !!}">
+      <div class="form-group has-feedback {!! !$errors->has('password') ?: 'has-error' !!}"  style="width: 300px">
 
         @if($errors->has('password'))
           @foreach($errors->get('password') as $message)
@@ -57,11 +57,13 @@
       <div class="row">
 
         <!-- /.col -->
-        <div class="col-xs-4 col-md-offset-4">
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('admin.login') }}</button>
+        <div class="text-center">
+            <div style="margin-left: 16px;margin-bottom: 20px">{!! Geetest::render() !!}</div>
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-primary btn-flat">{{ trans('admin.login') }}</button>
+            <a href="/register" class="btn btn-primary" style="margin-left: 20px">注册</a>
         </div>
-        <a href="/register">还没有账号？</a>
+
         <!-- /.col -->
       </div>
     </form>

@@ -81,6 +81,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         array (
             'Illuminate\\' => 11,
         ),
+        'G' => 
+        array (
+            'Germey\\Geetest\\' => 15,
+        ),
         'F' => 
         array (
             'Fideloper\\Proxy\\' => 16,
@@ -236,6 +240,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'Germey\\Geetest\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/germey/geetest/src',
         ),
         'Fideloper\\Proxy\\' => 
         array (
@@ -1095,6 +1103,11 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'Germey\\Geetest\\Geetest' => __DIR__ . '/..' . '/germey/geetest/src/Geetest.php',
+        'Germey\\Geetest\\GeetestCaptcha' => __DIR__ . '/..' . '/germey/geetest/src/GeetestCaptcha.php',
+        'Germey\\Geetest\\GeetestController' => __DIR__ . '/..' . '/germey/geetest/src/GeetestController.php',
+        'Germey\\Geetest\\GeetestLib' => __DIR__ . '/..' . '/germey/geetest/src/GeetestLib.php',
+        'Germey\\Geetest\\GeetestServiceProvider' => __DIR__ . '/..' . '/germey/geetest/src/GeetestServiceProvider.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
