@@ -20,6 +20,7 @@ class CreatePrizedocsTable extends Migration
             $table->string('activity_name');
             $table->string('doc_activity');
             $table->string('doc_prize');
+            $table->string('doc_summary')->nullable();
             $table->string('apply_time');
             $table->string('apply_note')->nullable();
             $table->string('accept_id')->nullable();

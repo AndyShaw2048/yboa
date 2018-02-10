@@ -40,10 +40,10 @@ class PrizeDocController extends Controller
         return Admin::content(function (Content $content) use ($id) {
             $content->header('活动奖品申请系统');
             $isEdited = PrizeDoc::getStatus($id);
-            if(is_null($isEdited))
-                $content->body($this->form()->edit($id));
-            else
+            if($isEdited)
                 $content->body($this->editedForm()->edit($id));
+            else
+                $content->body($this->form()->edit($id));
 
         });
     }
@@ -95,6 +95,12 @@ class PrizeDocController extends Controller
                 $value = url('uploads/'.$value);
                 return "<a href='$value' target='_blank'>点击下载</a>";
             });;
+            $grid->doc_summary('活动总结书')->display(function($value){
+                if(is_null($value))
+                    return '未上传';
+                $value = url('uploads/'.$value);
+                return "<a href='$value' target='_blank'>点击下载</a>";
+            });;
             $grid->apply_time('申请时间');
             $grid->accept_opinion('审核意见')->display(function($r){
                 if(is_null($r))
@@ -122,8 +128,11 @@ class PrizeDocController extends Controller
                 $form->hidden('apply_id')->default(Admin::user()->id);
                 $form->text('activity_name','活动名称');
                 $form->mobile('apply_contact','联系方式')->options(['mask'=>'999 9999 9999']);
-                $form->file('doc_activity','活动计划书')->move('ApplyPrizeDocs')->uniqueName();
-                $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName();
+                $form->file('doc_activity','活动计划书')->move('ApplyPrizeDocs')->uniqueName()
+                    ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件4 易班学生工作站活动计划书模版.doc').'" target="_blank">点击下载活动计划书模板</a>');
+                $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName()
+                     ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件2 西华师范大学易班学生工作站奖品申请表2017.docx').'" target="_blank">点击下载奖品申请表模板</a>');
+                $form->hidden('doc_summary');
                 $form->hidden('apply_time')->default(date("Y-m-d h:i:s",time()));
                 $form->textarea('apply_note','备注');
             }
@@ -166,8 +175,9 @@ class PrizeDocController extends Controller
                 $form->display('accept_opinion','审核意见');
                 $form->display('accept_note','审核备注');
                 $form->display('accept_time','审核时间');
-                $form->disableSubmit();
-                $form->disableReset();
+                $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()
+                     ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件5 易班学生工作站总结书模版.doc').'" target="_blank">点击下载活动总结书模板</a>');
+
             }
 
 

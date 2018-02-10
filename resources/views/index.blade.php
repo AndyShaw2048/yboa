@@ -39,12 +39,12 @@
             padding-top:30px;
         }
         .title{
-            margin-top: 200px;
+            margin-top: 180px;
             font-size: 58px;
             font-family:'jdzhonyuanjian101e1aa9b21be74';
         }
         .bottom{
-            margin-top: 300px;
+            margin-top: 280px;
         }
     </style>
     <!--[if IE]>
@@ -55,6 +55,7 @@
     <section class="canvas-wrap">
         <div class="canvas-content container">
             <div class="title">西华师范大学易班OA系统</div>
+            <span style="font-size: 24px">- 科技，改变生活 -</span>
             <div style="margin-top: 80px">
                 <a href="/admin" class="btn btn-info">登录系统</a>
                 <a href="#" class="btn btn-info" style="margin-left: 100px">预留位置</a>
