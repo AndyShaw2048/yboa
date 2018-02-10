@@ -37,12 +37,12 @@ return [
     /*
      * Laravel-admin html title.
      */
-    'title' => 'Admin',
+    'title' => '西华师大易班OA系统',
 
     /*
      * Use `https`.
      */
-    'secure' => true,
+    'secure' => false,
 
     /*
      * Laravel-admin auth setting.

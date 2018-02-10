@@ -39,7 +39,7 @@
                             <img src="{{ \App\User::avatar() }}" class="img-circle" alt="User Image">
                             <p>
                                 {{ Admin::user()->name }}
-                                <small>Member since admin {{ Admin::user()->created_at }}</small>
+                                {{--<small>Member since admin {{ Admin::user()->created_at }}</small>--}}
                             </p>
                         </li>
                         <li class="user-footer">

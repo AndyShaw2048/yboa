@@ -12,7 +12,7 @@
                 <p>
 {{ Admin::user()->name }}</p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-user text-success"></i> {{ \App\User::roles() }}</a>
+                <a ><i class="fa fa-user text-success"></i> {{ \App\User::roles() }}</a>
             </div>
         </div>
 
