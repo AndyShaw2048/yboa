@@ -60,6 +60,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         array (
             'Ramsey\\Uuid\\' => 12,
         ),
+        'Q' => 
+        array (
+            'Qcloud\\Sms\\' => 11,
+        ),
         'P' => 
         array (
             'Psy\\' => 4,
@@ -204,6 +208,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
+        'Qcloud\\Sms\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src',
         ),
         'Psy\\' => 
         array (
@@ -3039,6 +3047,13 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'Psy\\VersionUpdater\\GitHubChecker' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VersionUpdater/GitHubChecker.php',
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/Psy/VersionUpdater/NoopChecker.php',
+        'Qcloud\\Sms\\SmsMobileStatusPuller' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsMobileStatusPuller.php',
+        'Qcloud\\Sms\\SmsMultiSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsMultiSender.php',
+        'Qcloud\\Sms\\SmsSenderUtil' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsSenderUtil.php',
+        'Qcloud\\Sms\\SmsSingleSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsSingleSender.php',
+        'Qcloud\\Sms\\SmsStatusPuller' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsStatusPuller.php',
+        'Qcloud\\Sms\\SmsVoicePromptSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsVoicePromptSender.php',
+        'Qcloud\\Sms\\SmsVoiceVerifyCodeSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsVoiceVerifyCodeSender.php',
         'Ramsey\\Uuid\\BinaryUtils' => __DIR__ . '/..' . '/ramsey/uuid/src/BinaryUtils.php',
         'Ramsey\\Uuid\\Builder\\DefaultUuidBuilder' => __DIR__ . '/..' . '/ramsey/uuid/src/Builder/DefaultUuidBuilder.php',
         'Ramsey\\Uuid\\Builder\\DegradedUuidBuilder' => __DIR__ . '/..' . '/ramsey/uuid/src/Builder/DegradedUuidBuilder.php',

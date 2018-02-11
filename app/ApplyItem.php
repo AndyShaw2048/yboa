@@ -13,9 +13,11 @@ class ApplyItem extends Model
         return $this->hasOne(ApplyItemDetail::class);
     }
 
-    //获取当前订单的状态
-    public static function getStatus($id)
-    {
-
+    //根据ID获取当前订单的Name、Tel
+    public static function getInfo($id){
+        $obj = ApplyItem::where('id',$id)
+                          ->select('apply_id','apply_contact')
+                          ->get();
+        return $obj;
     }
 }

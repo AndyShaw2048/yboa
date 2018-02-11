@@ -78,4 +78,5 @@ class ApplyItemDetail extends Model
         ApplyItemDetail::where('apply_item_id',$id)
                          ->update(['status' => $string]);
     }
+
 }

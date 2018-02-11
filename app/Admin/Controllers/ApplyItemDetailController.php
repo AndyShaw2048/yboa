@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\ApplyItem;
 use App\ApplyItemDetail;
 
 use App\User;
@@ -11,6 +12,8 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use App\Http\Controllers\SendMegController;
+use Illuminate\Support\MessageBag;
 
 class ApplyItemDetailController extends Controller
 {
@@ -118,12 +121,45 @@ class ApplyItemDetailController extends Controller
             $form->text('accept_4_opn');
             $form->text('accept_4_note');
             $form->text('accept_4_time');
+
             $form->saved(function (Form $form) {
+
                 $array_o = $form->model()->status;
                 $array_o = explode('|', $array_o);
+                //更新订单状态
                 $string = $array_o[0] . '|' . ($array_o[1] + 1);
                 ApplyItemDetail::updateStatus($array_o[0], $string);
-                return;
+
+                if($array_o[1] == 1)
+                {
+                    //发送短信通知
+                    $obj = ApplyItem::getInfo($array_o[0]);
+                    $name = User::getRealName($obj[0]['apply_id']);
+                    $tel = str_replace(' ','',$obj[0]['apply_contact']);
+                    $list_id = $array_o[0];
+                    $r = SendMegController::sendMsg('87610',$tel,$name,$list_id);
+
+                    //抛出信息
+                    $isFail = $r->result;
+                    if(!$isFail){
+                        $success = new MessageBag([
+                                                      'title'   => '提示',
+                                                      'message' => '通知短信发送成功',
+                                                  ]);
+                        return back()->with(compact('success'));
+                    }
+                    else{
+                        $error = new MessageBag([
+                                                    'title'   => '警告',
+                                                    'message' => '通知短信发送失败，错误代码为'.$isFail.'，请通知网站管理员进行处理',
+                                                ]);
+
+                        return back()->with(compact('error'));
+                    }
+                }
+
+
+
             });
         });
     }
@@ -131,7 +167,6 @@ class ApplyItemDetailController extends Controller
 
     protected function editedForm($array)
     {
-
         if ( $array[1] == 1 ) {
             return Admin::form(ApplyItemDetail::class, function (Form $form) {
                 $form->tab('线上审核', function ($form) {
