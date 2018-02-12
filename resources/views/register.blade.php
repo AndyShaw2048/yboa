@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jQuery添加背景动画效果插件</title>
+    <title>西华师大易班OA系统-注册</title>
     <link rel="stylesheet" type="text/css" href="css/css-register-bg/style/index.css">
     <link rel="stylesheet" type="text/css" href="css/css-register-bg/style/prism.css">
     <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
@@ -12,7 +12,7 @@
     <script type="text/javascript" src="css/css-register-bg/js/index.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/prism.js"></script>
 
-    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.svg">
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/css-register-banner/style.css" type="text/css" />
     <link rel="stylesheet" href="css/css-register-banner/style.css" type="text/css" />
