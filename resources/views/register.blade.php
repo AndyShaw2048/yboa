@@ -7,13 +7,13 @@
     <title>jQuery添加背景动画效果插件</title>
     <link rel="stylesheet" type="text/css" href="css/css-register-bg/style/index.css">
     <link rel="stylesheet" type="text/css" href="css/css-register-bg/style/prism.css">
-    <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/quietflow.min.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/index.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/prism.js"></script>
 
-    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
-    <script src="https://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/css-register-banner/style.css" type="text/css" />
     <link rel="stylesheet" href="css/css-register-banner/style.css" type="text/css" />
 
