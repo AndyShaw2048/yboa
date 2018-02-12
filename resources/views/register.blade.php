@@ -12,8 +12,8 @@
     <script type="text/javascript" src="css/css-register-bg/js/index.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/prism.js"></script>
 
-    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://apps.bdimg.com/libs/bootstrap/3.3.4/fonts/glyphicons-halflings-regular.svg">
+    <script src="https://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/css-register-banner/style.css" type="text/css" />
     <link rel="stylesheet" href="css/css-register-banner/style.css" type="text/css" />
 
