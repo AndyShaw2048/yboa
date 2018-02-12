@@ -7,7 +7,7 @@
     <title>jQuery添加背景动画效果插件</title>
     <link rel="stylesheet" type="text/css" href="css/css-register-bg/style/index.css">
     <link rel="stylesheet" type="text/css" href="css/css-register-bg/style/prism.css">
-    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/quietflow.min.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/index.js"></script>
     <script type="text/javascript" src="css/css-register-bg/js/prism.js"></script>
