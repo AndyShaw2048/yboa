@@ -26,9 +26,9 @@ class RegisterController extends Controller
     {
         //易班接入配置项
         $config = array(
-            'AppID'     => '0fa5afb76289cf89',
-            'AppSecret' => 'b4c1ea3cca60a4a1fa7d5e714fea2cda',
-            'CallBack'  => 'http://oa.com/register',
+            'AppID'     => env('YB_APPID'),
+            'AppSecret' => env('YB_APPSECRET'),
+            'CallBack'  => env('YB_CALLBACK'),
         );
 
         $api = YBOpenApi::getInstance()->init($config['AppID'], $config['AppSecret'], $config['CallBack']);
@@ -78,9 +78,9 @@ class RegisterController extends Controller
     public function store(RegisterValidate $request)
     {
         $config = array(
-            'AppID'     => '0fa5afb76289cf89',  //此处填写你的appid
-            'AppSecret' => 'b4c1ea3cca60a4a1fa7d5e714fea2cda',  //此处填写你的AppSecret
-            'CallBack'  => 'http://oa.com/register',  //此处填写你的授权回调地址
+            'AppID'     => env('YB_APPID'),
+            'AppSecret' => env('YB_APPSECRET'),
+            'CallBack'  => env('YB_CALLBACK'),
         );
         $api = YBOpenApi::getInstance()->init($config['AppID'], $config['AppSecret'], $config['CallBack']);
         $token = session('token');
@@ -166,9 +166,9 @@ class RegisterController extends Controller
     public function logout()
     {
         $config = array(
-            'AppID'     => '0fa5afb76289cf89',
-            'AppSecret' => 'b4c1ea3cca60a4a1fa7d5e714fea2cda',
-            'CallBack'  => 'http://oa.com/register',
+            'AppID'     => env('YB_APPID'),
+            'AppSecret' => env('YB_APPSECRET'),
+            'CallBack'  => env('YB_CALLBACK'),
         );
         $api = YBOpenApi::getInstance()->init($config['AppID'], $config['AppSecret'], $config['CallBack']);
         $token = session('token');//网站接入获取的token
