@@ -51,6 +51,7 @@ class AuthController extends Controller
 //            admin_toastr(trans('admin.login_successful'));
             admin_toastr('你好，'.User::getRealName(Admin::user()->id));
 
+            session(['user_id' => Admin::user()->id]);
             return redirect()->intended(config('admin.route.prefix'));
         }
 
@@ -159,8 +160,9 @@ class AuthController extends Controller
      */
     protected function getFailedLoginMessage()
     {
-        return Lang::has('auth.failed')
-            ? trans('auth.failed')
-            : 'These credentials do not match our records.';
+        return '用户名或密码错误';
+//        return Lang::has('auth.failed')
+//            ? trans('auth.failed')
+//            : 'These credentials do not match our records.';
     }
 }

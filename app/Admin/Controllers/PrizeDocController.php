@@ -11,6 +11,8 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use App\Http\Controllers\SendMegController;
+use Illuminate\Support\MessageBag;
 
 class PrizeDocController extends Controller
 {
@@ -155,6 +157,31 @@ class PrizeDocController extends Controller
                 $form->textarea('accept_note','备注');
                 $form->hidden('accept_id')->default(Admin::user()->id);
                 $form->hidden('accept_time')->default(date('Y-m-d h:i:s',time()));
+                $form->saved(function (Form $form){
+                    //发送短信通知
+                    $name = User::getRealName($form->model()->apply_id);
+                    $tel = str_replace(' ','',$form->model()->apply_contact);
+                    $list_id = $form->model()->id;
+                    $r = SendMegController::sendMsg('876100',$tel,$name,$list_id);
+
+                    //抛出信息
+                    $isFail = $r->result;
+                    if(!$isFail){
+                        $success = new MessageBag([
+                                                      'title'   => '提示',
+                                                      'message' => '通知短信发送成功',
+                                                  ]);
+                        return back()->with(compact('success'));
+                    }
+                    else{
+                        $error = new MessageBag([
+                                                    'title'   => '警告',
+                                                    'message' => '通知短信发送失败，错误代码为'.$isFail.'，请通知网站管理员进行处理',
+                                                ]);
+
+                        return back()->with(compact('error'));
+                    }
+                });
             }
         });
     }
