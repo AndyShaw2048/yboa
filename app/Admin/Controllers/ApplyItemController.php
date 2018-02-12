@@ -26,6 +26,7 @@ class ApplyItemController extends Controller
     {
         return Admin::content(function (Content $content) {
             $content->header('易班物资租借系统');
+            $content->description('注意：易班物资租借需提前 一周 进行申请');
             $content->body($this->grid());
         });
     }

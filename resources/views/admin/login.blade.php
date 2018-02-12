@@ -21,11 +21,13 @@
   <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <script src="http://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ admin_base_path('/') }}"><b>{{config('admin.name')}}</b></a>
+    <a href="{{ url('/') }}"><b>{{config('admin.name')}}</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body " style="width:340px">

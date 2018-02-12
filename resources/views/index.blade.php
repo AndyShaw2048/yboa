@@ -58,7 +58,7 @@
             <span style="font-size: 24px">- 科技，改变生活 -</span>
             <div style="margin-top: 80px">
                 <a href="/admin" class="btn btn-info">登录系统</a>
-                <a href="#" class="btn btn-info" style="margin-left: 100px">预留位置</a>
+                <a href="#" class="btn btn-info" style="margin-left: 100px">使用文档(开发中)</a>
             </div>
             <div class="bottom">Copyright © 2017-2018 西华师范大学易班工作中心 All Rights Reserved - 蜀ICP备18001356号-1</div>
         </div>

@@ -27,6 +27,7 @@ class PrizeDocController extends Controller
     {
         return Admin::content(function (Content $content) {
             $content->header('活动奖品申请系统');
+            $content->description('注意：活动奖品需提前 一周 进行申请');
             $content->body($this->grid());
         });
     }
@@ -41,6 +42,8 @@ class PrizeDocController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
             $content->header('活动奖品申请系统');
+            $content->description('注意：活动奖品需提前 一周 进行申请');
+
             $isEdited = PrizeDoc::getStatus($id);
             if($isEdited)
                 $content->body($this->editedForm()->edit($id));
@@ -59,6 +62,8 @@ class PrizeDocController extends Controller
     {
         return Admin::content(function (Content $content) {
             $content->header('活动奖品申请系统');
+            $content->description('注意：活动奖品需提前 一周 进行申请');
+
             $content->body($this->form());
         });
     }
@@ -128,14 +133,14 @@ class PrizeDocController extends Controller
             if(Admin::user()->isRole('college'))
             {
                 $form->hidden('apply_id')->default(Admin::user()->id);
-                $form->text('activity_name','活动名称');
-                $form->mobile('apply_contact','联系方式')->options(['mask'=>'999 9999 9999']);
-                $form->file('doc_activity','活动计划书')->move('ApplyPrizeDocs')->uniqueName()
+                $form->text('activity_name','活动名称')->placeholder('例：xxx学院xxxxx活动');
+                $form->mobile('apply_contact','联系方式')->options(['mask'=>'999 9999 9999'])->help('该联系方式用于短信通知');
+                $form->file('doc_activity','活动计划书')->move('ApplyPrizeDocs')->uniqueName()->rules('mimes:doc,docx,xlsx')
                     ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件4 易班学生工作站活动计划书模版.doc').'" target="_blank">点击下载活动计划书模板</a>');
-                $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName()
+                $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName()->rules('mimes:doc,docx,xlsx')
                      ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件2 西华师范大学易班学生工作站奖品申请表2017.docx').'" target="_blank">点击下载奖品申请表模板</a>');
-                $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()
-                     ->help('<span style="color: red;font-weight: bold">活动结束后请及时上传</span>');
+                $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()->rules('mimes:doc,docx,xlsx')
+                     ->help('<span style="color: red;font-weight: bold">留空，活动结束后请及时上传</span>');
                 $form->hidden('apply_time')->default(date("Y-m-d h:i:s",time()));
                 $form->textarea('apply_note','备注');
             }
@@ -162,7 +167,7 @@ class PrizeDocController extends Controller
                     $name = User::getRealName($form->model()->apply_id);
                     $tel = str_replace(' ','',$form->model()->apply_contact);
                     $list_id = $form->model()->id;
-                    $r = SendMegController::sendMsg('876100',$tel,$name,$list_id);
+                    $r = SendMegController::sendMsg('87668',$tel,$name,$list_id);
 
                     //抛出信息
                     $isFail = $r->result;
@@ -209,7 +214,7 @@ class PrizeDocController extends Controller
                 $form->display('doc_prize','奖品申请表')->with(function(){
                     return '<span style="color: #00a157;font-weight: bold">已上传</span>';
                 });
-                $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()
+                $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()->rules('mimes:doc,docx,xlsx')
                      ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件5 易班学生工作站总结书模版.doc').'" target="_blank">点击下载活动总结书模板</a>');
 
             }
