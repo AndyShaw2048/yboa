@@ -28,4 +28,8 @@ class ApiController extends Controller
         dd($r->result);
     }
 
+    public function testReg(){
+        return view('register',['isRegister' => false,'username' => '肖勇','errors' => []]);
+    }
+
 }

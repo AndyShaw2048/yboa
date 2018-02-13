@@ -112,25 +112,13 @@ class AuthController extends Controller
         return Administrator::form(function (Form $form) {
             $form->display('username', trans('admin.username'));
             $form->text('name', trans('admin.name'))->rules('required');
-            if(Admin::user()->inRoles(['minister','officer'])){
-                if(User::department()) {
-                    $form->display('department_id','所属部门')->with(function($value){
-                        switch($value){
-                            case 1:return '技术部';
-                            case 2:return '办公室';
-                            case 3:return '新闻部';
-                            case 4:return '宣传部';
-                        }
-                    });
-                }
-                else{
-                    $form->select('department_id','所属部门')->options([
-                           '1' => '技术部',
-                           '2' => '办公室',
-                           '3' => '新闻部',
-                           '4' => '宣传部'
-                                                                   ])->help('你只有一次修改机会！');
-                }
+            if(Admin::user()->inRoles(['minister','officer'])) {
+                $form->select('department_id', '所属部门')->options([
+                                                                    '1' => '技术部',
+                                                                    '2' => '办公室',
+                                                                    '3' => '新闻部',
+                                                                    '4' => '宣传部'
+                                                                ]);
             }
             $form->password('password', trans('admin.password'))->rules('confirmed|required');
             $form->password('password_confirmation', trans('admin.password_confirmation'))->rules('required')

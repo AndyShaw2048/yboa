@@ -42,12 +42,13 @@ class RegisterController extends Controller
         //网站接入获取的token
         $token = $info['token'];
         $api->bind($token);
-        $result = $api->request('user/me');
+        $result = $api->request('user/real_me');
 
         //获取userid
         $yiban_id = $result['info']['yb_userid'];
 
-        $yb_username = $result['info']['yb_username'];
+        $yb_username = $result['info']['yb_realname'];
+
         //判断用户是否已注册
         $isRegister = false;
         $RegisterUser = Register::where('yiban_id',$yiban_id)->first();
@@ -85,11 +86,11 @@ class RegisterController extends Controller
         $api = YBOpenApi::getInstance()->init($config['AppID'], $config['AppSecret'], $config['CallBack']);
         $token = session('token');
         $api->bind($token);
-        $result = $api->request('user/me');
+        $result = $api->request('user/real_me');
 
         //获取用户信息
         $yb_userid = $result['info']['yb_userid'];
-        $yb_username = $result['info']['yb_username'];
+        $yb_username = $result['info']['yb_realname'];
         $yb_userhead = $result['info']['yb_userhead'];
 
         //判断用户名是否重复

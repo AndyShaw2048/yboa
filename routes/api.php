@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('inventory','ApiController@getInventoryList');
 Route::get('testSendMsg','ApiController@testSendMsg');
+Route::get('testReg','ApiController@testReg');

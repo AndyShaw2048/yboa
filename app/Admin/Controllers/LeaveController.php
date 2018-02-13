@@ -11,6 +11,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Support\MessageBag;
 
 class LeaveController extends Controller
 {
@@ -222,6 +223,18 @@ class LeaveController extends Controller
                 $form->textarea('apply_reason','请假理由')->rules('required',[
                     'required' => '请假理由禁止为空',
                 ]);;
+
+                $form->saving(function (Form $form){
+                    if(is_null($form->apply_department)){
+                        $error = new MessageBag([
+                                                    'title'   => '错误信息',
+                                                    'message' => '请先选择自己的所属部门',
+                                                ]);
+
+                        return back()->with(compact('error'));
+                    }
+
+                });
             }
 
 

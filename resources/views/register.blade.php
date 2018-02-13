@@ -76,6 +76,7 @@
                             <label for="phone" class="col-sm-3 control-label">*联系电话</label>
                             <div class="col-sm-9">
                                 <input type="text" name="telephone" class="form-control" id="phone" placeholder="请输入有效联系电话">
+                                <div class="text-left"><b>注：组织单位请输入主要负责人的联系方式</b></div>
                             </div>
                         </div>
                         <div class="form-group">
