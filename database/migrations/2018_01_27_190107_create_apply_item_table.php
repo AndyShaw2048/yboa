@@ -16,7 +16,7 @@ class CreateApplyItemTable extends Migration
         Schema::create('apply_item', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('apply_id');
-            $table->unsignedInteger('apply_item');
+            $table->string('apply_item');
             $table->unsignedInteger('apply_num');
             $table->string('apply_reason');
             $table->string('apply_contact');
@@ -28,6 +28,8 @@ class CreateApplyItemTable extends Migration
             $table->string('status')->default(1);
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE apply_item AUTO_INCREMENT = 10000;");
+
     }
 
     /**

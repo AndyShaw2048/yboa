@@ -24,6 +24,9 @@ class CreateItemDetailTable extends Migration
             $table->string('operate_time');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE item_details AUTO_INCREMENT = 10000;");
+
+
     }
 
     /**

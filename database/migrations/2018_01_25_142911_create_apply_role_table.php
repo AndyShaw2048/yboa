@@ -23,6 +23,8 @@ class CreateApplyRoleTable extends Migration
             $table->string('accept_time')->nullable();
             $table->timestamps();
         });
+
+
     }
 
     /**

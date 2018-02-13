@@ -37,7 +37,6 @@
         @endif
 
 
-
         {{--没有注册显示如下页面--}}
         @if(!$isRegister)
 
@@ -55,10 +54,9 @@
                     <form class="form-horizontal" action="/register" method="post">
                         {{csrf_field()}}
                         <div class="form-group">
-                            <label for="username" class="col-sm-3 control-label">*用户名</label>
+                            <label for="username" class="col-sm-3 control-label">*登录账号</label>
                             <div class="col-sm-9">
-                                <input type="text" name="username" class="form-control" id="username" placeholder="请填入11位手机号码">
-                            </div>
+                                <input type="text" name="username" class="form-control" id="username" placeholder="请输入11位手机号"></div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-sm-3 control-label">*密码</label>
@@ -100,9 +98,9 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <div class="col-sm-offset-1 col-sm-10">
+                            <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-primary" style="margin: 0 50px 0 50px">注册</button>
-                                <a class="btn btn-default" href="/logout">更换账号</a>
+                                {{--<a class="btn btn-default" href="/logout">更换账号</a>--}}
                             </div>
                         </div>
                     </form>

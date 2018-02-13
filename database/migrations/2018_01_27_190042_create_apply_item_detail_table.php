@@ -35,6 +35,8 @@ class CreateApplyItemDetailTable extends Migration
             $table->string('status')->nullable();
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE apply_item_detail AUTO_INCREMENT = 10000;");
+
     }
 
     /**

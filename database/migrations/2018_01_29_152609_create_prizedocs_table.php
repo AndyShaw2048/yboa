@@ -29,6 +29,8 @@ class CreatePrizedocsTable extends Migration
             $table->string('accept_note')->nullable();
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE prizedocs AUTO_INCREMENT = 10000;");
+
     }
 
     /**

@@ -26,8 +26,11 @@ class CreateAdminTables extends Migration
             $table->string('email')->nullable();
             $table->string('qq')->nullable();
             $table->unsignedInteger('department_id')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE ".config('admin.database.users_table')." AUTO_INCREMENT = 10000;");
+
 
         Schema::connection($connection)->create(config('admin.database.roles_table'), function (Blueprint $table) {
             $table->increments('id');

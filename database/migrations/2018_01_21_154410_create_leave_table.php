@@ -29,6 +29,7 @@ class CreateLeaveTable extends Migration
             $table->string('accept_time')->nullable();          //处理时间
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE leaves AUTO_INCREMENT = 10000;");
     }
 
     /**

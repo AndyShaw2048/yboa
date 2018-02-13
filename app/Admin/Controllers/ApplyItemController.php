@@ -112,7 +112,15 @@ class ApplyItemController extends Controller
 
             $form->display('id', '编号');
             $form->hidden('apply_id')->default(Admin::user()->id);
-            $form->select('apply_item','申请物品')->options([1=>1,2=>2]);
+            $form->select('apply_item','申请物品')->options([
+                                                            '易班熊'=>'易班熊',
+                                                            '音响'=>'音响',
+                                                            '话筒'=>'话筒',
+                                                            '相机'=>'相机',
+                                                            '插座'=>'插座',
+                                                            '幕布'=>'幕布',
+                                                            '投影仪'=>'投影仪',
+                                                        ]);
             $form->text('apply_num','申请数量');
             $form->textarea('apply_reason','申请理由');
             $form->mobile('apply_contact','联系方式')->options(['mask' => '999 9999 9999'])->help('主要负责人联系电话');

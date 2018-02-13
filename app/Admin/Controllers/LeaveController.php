@@ -228,7 +228,7 @@ class LeaveController extends Controller
                     if(is_null($form->apply_department)){
                         $error = new MessageBag([
                                                     'title'   => '错误信息',
-                                                    'message' => '请先选择自己的所属部门',
+                                                    'message' => '请先选择自己的所属部门，<a href="'.url('admin/auth/setting').'">点击前往设置</a>',
                                                 ]);
 
                         return back()->with(compact('error'));

@@ -112,6 +112,7 @@ class AuthController extends Controller
         return Administrator::form(function (Form $form) {
             $form->display('username', trans('admin.username'));
             $form->text('name', trans('admin.name'))->rules('required');
+            $form->text('telephone','联系方式');
             if(Admin::user()->inRoles(['minister','officer'])) {
                 $form->select('department_id', '所属部门')->options([
                                                                     '1' => '技术部',

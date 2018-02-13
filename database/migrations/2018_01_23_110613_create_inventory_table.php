@@ -21,6 +21,7 @@ class CreateInventoryTable extends Migration
             $table->unsignedInteger('stocks');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE inventory AUTO_INCREMENT = 10000;");
     }
 
     /**
