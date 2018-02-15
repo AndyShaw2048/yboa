@@ -24,6 +24,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'Y' => 
+        array (
+            'YuanChao\\Editor\\' => 16,
+        ),
         'X' => 
         array (
             'XdgBaseDir\\' => 11,
@@ -124,6 +128,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'YuanChao\\Editor\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yuanchao/laravel-5-markdown-editor/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -356,12 +364,14 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'App\\ApplyItemDetail' => __DIR__ . '/../..' . '/app/ApplyItemDetail.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Help' => __DIR__ . '/../..' . '/app/Help.php',
         'App\\Http\\Controllers\\ApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HelpController' => __DIR__ . '/../..' . '/app/Http/Controllers/HelpController.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
         'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',
         'App\\Http\\Controllers\\SendMegController' => __DIR__ . '/../..' . '/app/Http/Controllers/SendMegController.php',
@@ -3805,6 +3815,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'YBException' => __DIR__ . '/../..' . '/app/YibanApi/YBException.php',
         'YBLANG' => __DIR__ . '/../..' . '/app/YibanApi/YBLANG.php',
         'YBOpenApi' => __DIR__ . '/../..' . '/app/YibanApi/YBOpenApi.php',
+        'YuanChao\\Editor\\EndaEditor' => __DIR__ . '/..' . '/yuanchao/laravel-5-markdown-editor/src/EndaEditor.php',
+        'YuanChao\\Editor\\EndaEditorServiceProvider' => __DIR__ . '/..' . '/yuanchao/laravel-5-markdown-editor/src/EndaEditorServiceProvider.php',
+        'YuanChao\\Editor\\Facade\\EndaEditorFacade' => __DIR__ . '/..' . '/yuanchao/laravel-5-markdown-editor/src/Facade/EndaEditorFacade.php',
+        'YuanChao\\Editor\\Parsedown' => __DIR__ . '/..' . '/yuanchao/laravel-5-markdown-editor/src/Parsedown.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Help;
 use Illuminate\Http\Request;
+use EndaEditor;
 
 class HelpController extends Controller
 {
@@ -57,9 +58,11 @@ class HelpController extends Controller
         $obj = Help::where('id',$id)->get();
         foreach($obj as $value)
                 $content = $value->content;
-        return json_encode($content);
+        return json_encode(EndaEditor::MarkDecode($content));
     }
 
-
+    public function create(){
+        return view('help_create');
+    }
 
 }

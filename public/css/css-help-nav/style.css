@@ -20,5 +20,7 @@
 
 #content{
     margin: 2px 0 0 18px;
+    display: inline;
     float: left;
+    width:900px;
 }
