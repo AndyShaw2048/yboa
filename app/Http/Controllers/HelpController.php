@@ -65,4 +65,11 @@ class HelpController extends Controller
         return view('help_create');
     }
 
+    //图片上传
+    public function upload(Request $request)
+    {
+        $photo = $request->file('photo');
+        $path = $photo->store('/uploads/images','admin');
+        return json_encode(['errno'=>0,'data'=>[url('/uploads/'.$path)]]);
+    }
 }

@@ -76,6 +76,7 @@ return [
         ],
     ],
 
+
     /*
      * Laravel-admin database setting.
      */

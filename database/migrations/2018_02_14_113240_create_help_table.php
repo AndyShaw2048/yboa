@@ -17,7 +17,7 @@ class CreateHelpTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('parent_id');
             $table->string('title');
-            $table->string('content')->nullable();
+            $table->longText('content')->nullable();
             $table->timestamps();
         });
 
