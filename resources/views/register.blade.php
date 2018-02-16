@@ -74,7 +74,7 @@
                             <label for="phone" class="col-sm-3 control-label">*联系电话</label>
                             <div class="col-sm-9">
                                 <input type="text" name="telephone" class="form-control" id="phone" placeholder="请输入有效联系电话">
-                                <div class="text-left"><b>注：组织单位请输入主要负责人的联系方式</b></div>
+                                <div class="text-left"><b>注：组织单位请输入负责人的联系方式</b></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -98,9 +98,9 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <div class="col-sm-offset-2 col-sm-10">
+                            <div class="col-sm-offset-1 col-sm-10">
                                 <button type="submit" class="btn btn-primary" style="margin: 0 50px 0 50px">注册</button>
-                                {{--<a class="btn btn-default" href="/logout">更换账号</a>--}}
+                                <a class="btn btn-default" href="/logout">更换账号</a>
                             </div>
                         </div>
                     </form>
