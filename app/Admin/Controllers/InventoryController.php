@@ -65,7 +65,7 @@ class InventoryController extends Controller
         return Admin::grid(Inventory::class, function (Grid $grid) {
             $grid->id('编号');
             $grid->name('名称');
-            $grid->image('照片')->image('http://oa.com/uploads/',50,50);
+            $grid->image('照片')->image(env('APP_URL').'/uploads/',50,50);
             $grid->stocks('库存量');
             $grid->description('物品描述');
         });
