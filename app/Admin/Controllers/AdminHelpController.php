@@ -78,6 +78,12 @@ class AdminHelpController extends Controller
                 return str_limit($value,30,'...');
             });
             $grid->updated_at('更新时间');
+
+
+            $grid->filter(function($filter){
+                $filter->equal('parent_id','父级菜单');
+
+            });
         });
     }
 

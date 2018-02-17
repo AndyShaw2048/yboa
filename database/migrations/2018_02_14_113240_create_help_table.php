@@ -20,8 +20,6 @@ class CreateHelpTable extends Migration
             $table->longText('content')->nullable();
             $table->timestamps();
         });
-
-        DB::statement("ALTER TABLE help AUTO_INCREMENT = 10000;");
     }
 
     /**

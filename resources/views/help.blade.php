@@ -27,6 +27,8 @@
     </div>
     <div id="content">欢迎访问帮助文档</div>
 </div>
+<div style="clear: both"></div>
+<div class="footer">Copyright © 2017-2018 西华师范大学易班工作中心 All Rights Reserved - 蜀ICP备18001356号-1</div>
 
 </body>
 </html>
