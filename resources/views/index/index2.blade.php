@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>html5 canvas首屏自适应背景动画循环效果代码</title>
+    <title>西华师大易班OA系统</title>
+    <meta name="keywords" content="西华师大易班oa系统，西华师范大学易班oa系统，西华师范大学，西华师大，易班oa，西华师大易班">
+    <meta name="description" content="西华师大易班OA系统旨在为易班工作站提供日常管理的服务，本系统由西华师范大学易班学生工作站技术部制作。">
     <link href='http://cdn.webfont.youziku.com/webfonts/nomal/114292/19673/5a7d2b5cf629dc0a507de5f0.css' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="{{url('index2/css/normalize.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('index2/css/component.css')}}" />
