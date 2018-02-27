@@ -7,7 +7,8 @@
     <title>西华师大易班OA系统</title>
     <meta name="keywords" content="西华师大易班oa系统，西华师范大学易班oa系统，西华师范大学，西华师大，易班oa，西华师大易班">
     <meta name="description" content="西华师大易班OA系统旨在为易班工作站提供日常工作管理服务，由西华师范大学易班学生工作站技术部制作。">
-    <link href='http://cdn.webfont.youziku.com/webfonts/nomal/114292/19673/5a7d2b5cf629dc0a507de5f0.css' rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="{{url('imgs/favicon.ico')}}">
+    <link href='https://cdn.webfont.youziku.com/webfonts/nomal/114292/19673/5a7d2b5cf629dc0a507de5f0.css' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" type="text/css" href="{{url('index2/css/normalize.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('index2/css/component.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{url('index2/css/buttons.css')}}" />
