@@ -4,17 +4,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/font-awesome/css/font-awesome.min.css") }}">
+    <link rel="stylesheet" href="{{ admin_asset("/vendor/laravel-admin/AdminLTE/bootstrap/css/bootstrap.min.css") }}">
     <script src=<?php echo url('js/js-help-nav/help.nav.js')?> >  </script>
     <LINK rel=stylesheet type=text/css href="css/css-help-nav/style.css">
+    <link rel="stylesheet" href="css/css-help-nav/common.css">
+    <link rel="stylesheet" href="message/message.css">
+    <script src="message/message.js"></script>
     <title>西华师大易班OA系统|帮助文档</title>
     <meta charset="UTF-8">
+    <script type="text/javascript">
+        var w,h,className;
+        function getSrceenWH(){
+            w = $(window).width();
+            h = $(window).height();
+            $('#dialogBg').width(w).height(h);
+        }
+
+        window.onresize = function(){
+            getSrceenWH();
+        }
+        $(window).resize();
+
+        $(function(){
+            getSrceenWH();
+
+            //显示弹框
+            $(".box a").click(function(){
+                className = $(this).attr('class');
+                $('#dialogBg').fadeIn(300);
+                $('#dialog').removeAttr('class').addClass('animated '+className+'').fadeIn();
+            });
+
+            //关闭弹窗
+            $('.closeDialogBtn').click(function(){
+                $('#dialogBg').fadeOut(300,function(){
+                    $('#dialog').addClass('bounceOutUp').fadeOut();
+                });
+            });
+        });
+
+
+    </script>
+
 </head>
+
+
 <body>
 <div class="header">111</div>
 <div class="out-body">
     <div class="title">
         <div id="firstpane" class="menu_list">
-
             @foreach($head as $val)
                 <p class="menu_head current">{{$val['title']}}</p>
                 <div style="display:none" class=menu_body >
@@ -23,12 +63,47 @@
                 @endforeach
                 </div>
             @endforeach
+                <div class="box">
+                <a href="javascript:;" style="text-decoration: none" class="flipInX"><p class="menu_head">反馈建议</p></a>
+                </div>
         </div>
     </div>
     <div id="content">欢迎访问帮助文档</div>
 </div>
+
+{{--弹出窗口--}}
+<div id="dialogBg"></div>
+<div id="dialog" class="animated">
+    {{--<img class="dialogIco" width="50" height="50" src="images/ico.png" alt="" />--}}
+    <div class="dialogTop">
+        <span style="position: relative;right: 130px;">反馈建议</span>
+        <a href="javascript:;" class="closeDialogBtn"><i class="fa fa-close"></i></a>
+    </div>
+    <form action="feedback" method="post" id="editForm">
+        {{csrf_field()}}
+        <textarea class="feedback-content" name="content" autofocus maxlength="400" required style="resize: none;"></textarea>
+        <button type="submit" class="btn btn-primary" style="margin-top: 4px">提交</button>
+    </form>
+</div>
+<input id="tip" value="{{$errors}}" hidden>
+
 <div style="clear: both"></div>
 <div class="footer">Copyright © 2017-2018 西华师范大学易班工作中心 All Rights Reserved - 蜀ICP备18001356号-1</div>
 
 </body>
+<script>
+    var element = document.getElementById('tip');
+    $tip = element.getAttribute('value');
+    $tip = $tip.substring(9,10);
+    console.log($tip);
+    if($tip == '1'){
+        $.message('感谢您的反馈');
+    }
+    if($tip == '2'){
+        $.message({
+            message:'反馈出错啦',
+            type:'error'
+        });
+    }
+</script>
 </html>

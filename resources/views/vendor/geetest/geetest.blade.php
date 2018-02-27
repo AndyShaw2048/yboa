@@ -1,4 +1,6 @@
 {{--<script src="http://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>--}}
+<link rel="stylesheet" type="text/css" href="{{url('css/zeroModal.css')}}" />
+<script src="{{url('js/zeroModal.min.js')}}"></script>
 <script src="https://static.geetest.com/static/tools/gt.js"></script>
 <div id="{{ $captchaid }}"></div>
 <p id="wait-{{ $captchaid }}" class="show">加载中</p>
@@ -9,7 +11,8 @@
             $("#{{ $captchaid }}").closest('form').submit(function(e) {
                 var validate = captchaObj.getValidate();
                 if (!validate) {
-                    alert('{{ Config::get('geetest.client_fail_alert')}}');
+                    {{--alert('{{ Config::get('geetest.client_fail_alert')}}');--}}
+                    zeroModal.alert('请完成验证码操作');
                     e.preventDefault();
                 }
 

@@ -7,3 +7,4 @@ Route::get('/help','HelpController@index');
 Route::post('/help/getcontent','HelpController@getContent');
 Route::get('/help/create','HelpController@create');
 Route::post('/help/upload','HelpController@upload');
+Route::post('/feedback','FeedbackController@store');

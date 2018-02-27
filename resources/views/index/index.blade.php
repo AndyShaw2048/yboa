@@ -51,7 +51,7 @@
     <script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body style="background-color: #00a7d0">
     <section class="canvas-wrap">
         <div class="canvas-content container">
             <div class="title">西华师范大学易班OA系统</div>
@@ -64,6 +64,7 @@
         </div>
 
         <div id="canvas" class="gradient"></div>
+
     </section>
 
 
