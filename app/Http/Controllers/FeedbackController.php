@@ -15,7 +15,7 @@ class FeedbackController extends Controller
             $user_id = 0;
 
         $feedback = new Feedback();
-        $feedback->user = '21';
+        $feedback->user = $user_id;
         $feedback->content = $content;
         $r = $feedback->save();
         if($r)

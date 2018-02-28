@@ -85,7 +85,7 @@
                 </div>
         </div>
     </div>
-    <div id="content">欢迎访问帮助文档</div>
+    <div id="content"><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><h3><b>登录的账号是什么？</b></h3><p>本系统使用的登录账号为易班账号，但我们的数据库没有易班的账号数据，需要您进行主动授权后，方可获取您易班账号的数据</p><p><span style="background-color: rgb(254, 233, 204); color: rgb(0, 0, 0);">若您为首次登录，请点击</span><a href="/register" target="_blank" style="background-color: rgb(254, 233, 204);">注册</a><span style="background-color: rgb(254, 233, 204); color: rgb(0, 0, 0);">按钮</span></p><h3><b>如何注册？</b></h3><p>第一步：进入登录页面，点击<span style="background-color: rgb(254, 233, 204);">注册</span>按钮</p><p>第二步：输入易班账号密码，登录后自动跳转到个人信息完善界面。若您没有输入易班账号密码就直接跳转，请点击更换账号&nbsp;&nbsp;</p><p>第三步：跳转至登录界面，输入您刚刚设置的账号密码即可登录成功&nbsp;&nbsp;<span style="background-color: rgb(254, 233, 204);"><br></span><br></p><p><span style="background-color: rgb(254, 233, 204);"><br></span></p><p><br></p></div>
 </div>
 
 {{--弹出窗口--}}

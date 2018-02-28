@@ -125,7 +125,7 @@
             <div class="subtitle">- 科技，改变生活 -</div>
             <div class="button-group">
                 <a href="/admin" class="button button-glow button-rounded button-raised button-primary">登录系统</a>
-                <a href="/help" class="button button-glow button-rounded button-raised button-primary" style="margin-left: 160px">帮助文档</a>
+                <a href="/help" class="button button-glow button-rounded button-raised button-primary" id="help">帮助文档</a>
             </div>
             <div class="footer">Copyright © 2017-2018 西华师范大学易班工作中心 All Rights Reserved - 蜀ICP备18001356号-1</div>
             <canvas id="demo-canvas"></canvas>
@@ -136,5 +136,12 @@
 <script src="{{url('index2/js/EasePack.min.js')}}"></script>
 <script src="{{url('index2/js/rAF.js')}}"></script>
 <script src="{{url('index2/js/demo-1.js')}}"></script>
+<script>
+    var s = window.screen.width;
+    if(s > 460){
+        var element = document.getElementById('help');
+        element.style.marginLeft="160px";
+    }
+</script>
 </body>
 </html>

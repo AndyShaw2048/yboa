@@ -61,10 +61,6 @@ class HelpController extends Controller
         return json_encode(EndaEditor::MarkDecode($content));
     }
 
-    public function create(){
-        return view('help_create');
-    }
-
     //图片上传
     public function upload(Request $request)
     {
