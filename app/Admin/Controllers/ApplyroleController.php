@@ -139,6 +139,7 @@ class ApplyroleController extends Controller
             $form->textarea('apply_reason','认证说明')->rules('required',[
                 'required' => '请填写认证说明',
             ]);
+            $form->hidden('accept_id')->default(Admin::user()->id);
             $form->hidden('accept_opinion');
             $form->hidden('accept_time');
 

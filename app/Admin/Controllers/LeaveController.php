@@ -319,15 +319,15 @@ protected function editedForm()
         $isMinister = Admin::user()->isRole('minister');
         if($isMinister){
             $userid = Admin::user()->id;
-            $form->display('id');
-            $form->display('apply_name');
-            $form->display('apply_reason');
-            $form->display('accept_opinion');
+            $form->display('id','编号');
+            $form->display('apply_name','请假人');
+            $form->display('apply_reason','请假理由');
+            $form->display('accept_opinion','处理意见');
             $form->hidden('accept_id')->default($userid);
             $form->hidden('accept_time')->default(date("Y-m-d H:i:s",time()));
         }
         elseif(Admin::user()->isRole('manager')){
-            $form->display('id');
+            $form->display('id','编号');
             $form->display('apply_name','请假人');
             $form->display('apply_reason','请假理由');
             $form->display('请假时间')->with(function () {

@@ -31,11 +31,14 @@ class HomeController extends Controller
 //                    $column->append(Dashboard::dependencies());
 //                });
 //            });
-            for($i = 1;$i <= 5;$i++)
-            {
-                $array[$i] = Contact::where('category',$i)->get();
+            if(!Admin::user()->isRole('fresh')){
+                for($i = 1;$i <= 5;$i++)
+                {
+                    $array[$i] = Contact::where('category',$i)->get();
+                }
+                $content->body(view('contact',['array'=>$array]));
             }
-            $content->body(view('contact',['array'=>$array]));
+
         });
     }
 }

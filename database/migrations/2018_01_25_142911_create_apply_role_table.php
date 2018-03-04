@@ -18,6 +18,7 @@ class CreateApplyRoleTable extends Migration
             $table->unsignedInteger('apply_id');
             $table->unsignedInteger('apply_role');
             $table->string('apply_reason');
+            $table->string('accept_id')->nullable();
             $table->string('accept_opinion')->nullable();
             $table->string('accept_note')->nullable();
             $table->string('accept_time')->nullable();
