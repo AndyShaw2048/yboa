@@ -351,6 +351,7 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
     );
 
     public static $classMap = array (
+        'App\\Admin\\Controllers\\AdminHelpController' => __DIR__ . '/../..' . '/app/Admin/Controllers/AdminHelpController.php',
         'App\\Admin\\Controllers\\ApplyItemController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ApplyItemController.php',
         'App\\Admin\\Controllers\\ApplyItemDetailController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ApplyItemDetailController.php',
         'App\\Admin\\Controllers\\ApplyroleController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ApplyroleController.php',
@@ -360,10 +361,12 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'App\\Admin\\Controllers\\ItemDetailController' => __DIR__ . '/../..' . '/app/Admin/Controllers/ItemDetailController.php',
         'App\\Admin\\Controllers\\LeaveController' => __DIR__ . '/../..' . '/app/Admin/Controllers/LeaveController.php',
         'App\\Admin\\Controllers\\PrizeDocController' => __DIR__ . '/../..' . '/app/Admin/Controllers/PrizeDocController.php',
+        'App\\Admin\\Extensions\\WangEditor' => __DIR__ . '/../..' . '/app/Admin/Extensions/WangEditor.php',
         'App\\ApplyItem' => __DIR__ . '/../..' . '/app/ApplyItem.php',
         'App\\ApplyItemDetail' => __DIR__ . '/../..' . '/app/ApplyItemDetail.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Feedback' => __DIR__ . '/../..' . '/app/Feedback.php',
         'App\\Help' => __DIR__ . '/../..' . '/app/Help.php',
         'App\\Http\\Controllers\\ApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -371,6 +374,7 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\FeedbackController' => __DIR__ . '/../..' . '/app/Http/Controllers/FeedbackController.php',
         'App\\Http\\Controllers\\HelpController' => __DIR__ . '/../..' . '/app/Http/Controllers/HelpController.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
         'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',

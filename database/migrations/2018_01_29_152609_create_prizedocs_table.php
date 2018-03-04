@@ -27,6 +27,10 @@ class CreatePrizedocsTable extends Migration
             $table->string('accept_opinion')->nullable();
             $table->string('accept_time')->nullable();
             $table->string('accept_note')->nullable();
+            $table->string('accept_sum_id')->nullable();
+            $table->string('accept_sum_opinion')->nullable();
+            $table->string('accept_sum_time')->nullable();
+            $table->string('accept_sum_note')->nullable();
             $table->timestamps();
         });
         DB::statement("ALTER TABLE prizedocs AUTO_INCREMENT = 10000;");

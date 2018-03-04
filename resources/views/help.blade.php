@@ -85,7 +85,17 @@
                 </div>
         </div>
     </div>
-    <div id="content"><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><h3><b>登录的账号是什么？</b></h3><p>本系统使用的登录账号为易班账号，但我们的数据库没有易班的账号数据，需要您进行主动授权后，方可获取您易班账号的数据</p><p><span style="background-color: rgb(254, 233, 204); color: rgb(0, 0, 0);">若您为首次登录，请点击</span><a href="/register" target="_blank" style="background-color: rgb(254, 233, 204);">注册</a><span style="background-color: rgb(254, 233, 204); color: rgb(0, 0, 0);">按钮</span></p><h3><b>如何注册？</b></h3><p>第一步：进入登录页面，点击<span style="background-color: rgb(254, 233, 204);">注册</span>按钮</p><p>第二步：输入易班账号密码，登录后自动跳转到个人信息完善界面。若您没有输入易班账号密码就直接跳转，请点击更换账号&nbsp;&nbsp;</p><p>第三步：跳转至登录界面，输入您刚刚设置的账号密码即可登录成功&nbsp;&nbsp;<span style="background-color: rgb(254, 233, 204);"><br></span><br></p><p><span style="background-color: rgb(254, 233, 204);"><br></span></p><p><br></p></div>
+    <div id="content">
+        <p>
+            <span>&nbsp; &nbsp; 为了减轻易班助理的工作负担，简化工作流程，同时为校级组织及各学院易班提供更加方便快捷的服务，特开发此网上操作系统。此系统主要包括奖品申请、易班物资借用申请、校易班干事请假、库存管理4大功能，开设系统管理员、组织单位官方帐号等5大角色，并针对不同角色开放不同功能。</span>
+        </p>
+        <p>
+            <span>&nbsp; &nbsp; 以下是关于此系统操作的帮助文档，请仔细阅读，如有任何疑问，欢迎留下反馈意见。</span>
+        </p>
+        <div style="text-align:right;">
+            西华师范大学易班学生工作站
+        </div>
+    </div>
 </div>
 
 {{--弹出窗口--}}
@@ -98,7 +108,7 @@
     </div>
     <form action="feedback" method="post" id="editForm">
         {{csrf_field()}}
-        <textarea class="feedback-content" name="content" autofocus maxlength="400" required style="resize: none;"></textarea>
+        <textarea class="feedback-content" name="content" autofocus maxlength="400" required style="resize: none;" placeholder="建议点击右方浮窗，直接联系客服人员"></textarea>
         <button type="submit" class="btn btn-primary" style="margin-top: 4px">提交</button>
     </form>
 </div>
@@ -136,6 +146,12 @@
     if($tip == '2'){
         $.message({
             message:'反馈出错啦',
+            type:'error'
+        });
+    }
+    if($tip == '3'){
+        $.message({
+            message:'请5分钟后重试！',
             type:'error'
         });
     }

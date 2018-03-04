@@ -43,7 +43,7 @@ class LeaveController extends Controller
             $content->header('请假系统');
 
             //判断用户权限
-            $isRoles = Admin::user()->inRoles(['officer', 'minister']);
+            $isRoles = Admin::user()->inRoles(['officer', 'minister','manager']);
             if(!$isRoles){
                 $content->body('您没有审核权限！');
                 return;
@@ -122,12 +122,9 @@ class LeaveController extends Controller
                 $grid->disableFilter();
             }
 
-
-            //管理员界面
-            else
-            {
-                if(Admin::user()->isRole('minister'))
-                    $grid->model()->where('apply_department',User::department());
+            //网站管理员界面
+            elseif(Admin::user()->isRole('manager')){
+                $grid->model()->wherenotnull('accept_id');
                 $grid->id('编号')->sortable();
                 $grid->apply_name('申请人');
                 $grid->apply_contact('联系方式');
@@ -160,6 +157,44 @@ class LeaveController extends Controller
                     });
                 });
             }
+
+            //部长界面
+            else
+            {
+                $grid->model()->where('apply_department',User::department());
+                $grid->id('编号')->sortable();
+                $grid->apply_name('申请人');
+                $grid->apply_contact('联系方式');
+                $grid->apply_department('部门')->display(function ($apply_department){
+                    switch($apply_department){
+                        case 1:return '技术部';
+                        case 2:return '办公室';
+                        case 3:return '新闻部';
+                        case 4:return '宣传部';
+                        default:return '非法部门';
+                    }
+                });
+                $grid->apply_college('学院');
+                $grid->apply_grade('年级');
+                $grid->column('请假时间')->display(function () {
+                    return $this->apply_startTime.'<br>'.$this->apply_endTime;
+                });
+                $grid->apply_reason('请假理由');
+                $grid->accept_opinion('部长意见');
+                $grid->accept_time('处理时间');
+
+
+                $grid->disableCreateButton();
+                $grid->actions(function ($actions) {
+                    $actions->disableDelete();
+                });
+                $grid->tools(function ($tools) {
+                    $tools->batch(function ($batch) {
+                        $batch->disableDelete();
+                    });
+                });
+            }
+
         });
     }
 
@@ -255,7 +290,6 @@ class LeaveController extends Controller
                 $form->hidden('accept_time')->default(date("Y-m-d H:i:s",time()));
 
             }
-
         });
     }
 
@@ -290,6 +324,20 @@ protected function editedForm()
             $form->display('apply_reason');
             $form->display('accept_opinion');
             $form->hidden('accept_id')->default($userid);
+            $form->hidden('accept_time')->default(date("Y-m-d H:i:s",time()));
+        }
+        elseif(Admin::user()->isRole('manager')){
+            $form->display('id');
+            $form->display('apply_name','请假人');
+            $form->display('apply_reason','请假理由');
+            $form->display('请假时间')->with(function () {
+                return $this->apply_startTime.' - '.$this->apply_endTime;
+            });
+            $form->select('accept_opinion','审核意见')->options([
+                                                                '批准' => '批准',
+                                                                '驳回' => '驳回'
+                                                            ]);
+            $form->hidden('accept_id')->default(Admin::user()->id);
             $form->hidden('accept_time')->default(date("Y-m-d H:i:s",time()));
         }
 

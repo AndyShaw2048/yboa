@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Admin\\Controllers\\AdminHelpController' => $baseDir . '/app/Admin/Controllers/AdminHelpController.php',
     'App\\Admin\\Controllers\\ApplyItemController' => $baseDir . '/app/Admin/Controllers/ApplyItemController.php',
     'App\\Admin\\Controllers\\ApplyItemDetailController' => $baseDir . '/app/Admin/Controllers/ApplyItemDetailController.php',
     'App\\Admin\\Controllers\\ApplyroleController' => $baseDir . '/app/Admin/Controllers/ApplyroleController.php',
@@ -15,10 +16,12 @@ return array(
     'App\\Admin\\Controllers\\ItemDetailController' => $baseDir . '/app/Admin/Controllers/ItemDetailController.php',
     'App\\Admin\\Controllers\\LeaveController' => $baseDir . '/app/Admin/Controllers/LeaveController.php',
     'App\\Admin\\Controllers\\PrizeDocController' => $baseDir . '/app/Admin/Controllers/PrizeDocController.php',
+    'App\\Admin\\Extensions\\WangEditor' => $baseDir . '/app/Admin/Extensions/WangEditor.php',
     'App\\ApplyItem' => $baseDir . '/app/ApplyItem.php',
     'App\\ApplyItemDetail' => $baseDir . '/app/ApplyItemDetail.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Feedback' => $baseDir . '/app/Feedback.php',
     'App\\Help' => $baseDir . '/app/Help.php',
     'App\\Http\\Controllers\\ApiController' => $baseDir . '/app/Http/Controllers/ApiController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -26,6 +29,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
     'App\\Http\\Controllers\\Auth\\ResetPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ResetPasswordController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\FeedbackController' => $baseDir . '/app/Http/Controllers/FeedbackController.php',
     'App\\Http\\Controllers\\HelpController' => $baseDir . '/app/Http/Controllers/HelpController.php',
     'App\\Http\\Controllers\\IndexController' => $baseDir . '/app/Http/Controllers/IndexController.php',
     'App\\Http\\Controllers\\RegisterController' => $baseDir . '/app/Http/Controllers/RegisterController.php',

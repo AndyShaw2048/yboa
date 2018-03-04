@@ -23,6 +23,7 @@ class CreateAdminTables extends Migration
             $table->string('remember_token', 100)->nullable();
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE admin_users AUTO_INCREMENT = 10000;");
 
         Schema::connection($connection)->create(config('admin.database.roles_table'), function (Blueprint $table) {
             $table->increments('id');

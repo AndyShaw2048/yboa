@@ -15,4 +15,12 @@ class PrizeDoc extends Model
                               ->get();
         return $isEdited[0]->accept_opinion;
     }
+
+    public static function getSumStatus($id)
+    {
+        $isEdited = PrizeDoc::where('id',$id)
+                            ->select('accept_sum_opinion')
+                            ->get();
+        return $isEdited[0]->accept_sum_opinion;
+    }
 }

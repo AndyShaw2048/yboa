@@ -8,6 +8,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Layout\Row;
+use App\Contact;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,11 @@ class HomeController extends Controller
 //                    $column->append(Dashboard::dependencies());
 //                });
 //            });
+            for($i = 1;$i <= 5;$i++)
+            {
+                $array[$i] = Contact::where('category',$i)->get();
+            }
+            $content->body(view('contact',['array'=>$array]));
         });
     }
 }
