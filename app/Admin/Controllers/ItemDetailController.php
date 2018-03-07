@@ -5,6 +5,7 @@ namespace App\Admin\Controllers;
 use App\Http\Controllers\ApiController;
 use App\Inventory;
 use App\ItemDetail;
+use App\User;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -12,8 +13,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use Illuminate\Foundation\Auth\User;
-use Illuminate\Http\Request;
+
 
 class ItemDetailController extends Controller
 {
@@ -78,7 +78,7 @@ class ItemDetailController extends Controller
             $grid->changed('改变数量');
             $grid->after('最终数量');
             $grid->operate_id('操作人')->display(function($value){
-                return \App\User::realname($value);
+                return User::getRealName($value);
             });
             $grid->operate_reason('操作理由');
             $grid->operate_time('操作时间');
