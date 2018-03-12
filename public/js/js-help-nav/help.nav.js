@@ -15,7 +15,7 @@ $(document).ready(function(){
     $(".description").click(function(event){
         x = event.currentTarget;
         $.ajax({
-            url: "http://oa.com/help/getcontent",
+            url: "https://oa.xhsdyb.cn/help/getcontent",
             type: "post",
             contentType: "application/json;charset=utf-8",
             data :JSON.stringify({'id': x.id}),

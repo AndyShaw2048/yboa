@@ -108,7 +108,7 @@ class LeaveController extends Controller
                     if(is_null($value)){
                         return '<span style="color: #00a7d0;font-weight: bold">待审核</span>';
                     }
-                    if($value == '同意') return '<span style="color: #00a157;font-weight: bold">批准</span>';
+                    if($value == '批准') return '<span style="color: #00a157;font-weight: bold">批准</span>';
                     else return '<span style="color: #c73300;font-weight: bold">驳回</span>';
                 });
                 $grid->accept_time('处理时间');
