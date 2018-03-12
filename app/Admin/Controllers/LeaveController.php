@@ -123,7 +123,7 @@ class LeaveController extends Controller
             }
 
             //网站管理员界面
-            elseif(Admin::user()->inRoles(['administrator,manager'])){
+            elseif(Admin::user()->inRoles(['administrator','manager'])){
                 $grid->model()->wherenotnull('accept_id');
                 $grid->id('编号')->sortable();
                 $grid->apply_name('申请人');

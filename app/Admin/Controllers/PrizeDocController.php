@@ -149,7 +149,7 @@ class PrizeDocController extends Controller
             }
 
             //管理员审核界面
-            if(Admin::user()->inRoles(['administrator,manager,minister,PrizeDocRole']))
+            if(Admin::user()->inRoles(['administrator','manager','minister','PrizeDocRole']))
             {
                 $form->display('apply_id','申请单位')->with(function($id){
                    return User::getRealName($id);
@@ -234,7 +234,7 @@ class PrizeDocController extends Controller
                     }
 
                     //管理员审核界面
-                    if(Admin::user()->inRoles(['administrator,manager,minister,PrizeDocRole']))
+                    if(Admin::user()->inRoles(['administrator','manager','minister','PrizeDocRole']))
                     {
                         $form->display('apply_id','申请单位')->with(function($id){
                             return User::getRealName($id);
@@ -298,7 +298,7 @@ class PrizeDocController extends Controller
                     }
 
                     //管理员审核界面
-                    if(Admin::user()->inRoles(['administrator,manager,minister,PrizeDocRole']))
+                    if(Admin::user()->inRoles(['administrator','manager','minister','PrizeDocRole']))
                     {
                         $form->display('apply_id','申请单位')->with(function($id){
                             return User::getRealName($id);
@@ -360,7 +360,7 @@ class PrizeDocController extends Controller
                 }
 
                 //管理员审核界面
-                if(Admin::user()->inRoles(['administrator,manager,minister,PrizeDocRole']))
+                if(Admin::user()->inRoles(['administrator','manager','minister','PrizeDocRole']))
                 {
                     $form->display('apply_id','申请单位')->with(function($id){
                         return User::getRealName($id);
@@ -421,7 +421,7 @@ class PrizeDocController extends Controller
                     });
                 }
                     //管理员审核界面
-                    if(Admin::user()->inRoles(['administrator,manager,minister,PrizeDocRole']))
+                    if(Admin::user()->inRoles(['administrator','manager','minister','PrizeDocRole']))
                     {
                         $form->display('apply_id','申请单位')->with(function($id){
                             return User::getRealName($id);
