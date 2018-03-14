@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ee7a1f596aca7dbf155fe92fae2273f",
+    "content-hash": "2eda685b78f9632dc40d1c9b1d0d1506",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1388,6 +1388,42 @@
                 "sms"
             ],
             "time": "2018-01-23T06:52:45+00:00"
+        },
+        {
+            "name": "rainwsy/aliyundm",
+            "version": "dev-stable",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rainwsy/aliyundm.git",
+                "reference": "6648abfa1f5e589a8a466dce72bfcf3c15641a5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/rainwsy/aliyundm/6648abfa1f5e589a8a466dce72bfcf3c15641a5c.zip",
+                "reference": "6648abfa1f5e589a8a466dce72bfcf3c15641a5c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "Rainwsy\\Aliyunmail\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rainwsy53",
+                    "email": "rain53@vip.qq.com"
+                }
+            ],
+            "description": "a aliyun mail push package",
+            "time": "2016-08-04T07:31:57+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -4254,6 +4290,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "rainwsy/aliyundm": 20,
         "yuanchao/laravel-5-markdown-editor": 20
     },
     "prefer-stable": false,

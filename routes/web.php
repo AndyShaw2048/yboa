@@ -8,3 +8,5 @@ Route::post('/help/getcontent','HelpController@getContent');
 Route::get('/help/create','HelpController@create');
 Route::post('/help/upload','HelpController@upload');
 Route::post('/feedback','FeedbackController@store');
+Route::get('/mail/leave/{code}','MailController@toHtml');
+Route::post('/mail/leave','MailController@store');

@@ -63,6 +63,7 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'R' => 
         array (
             'Ramsey\\Uuid\\' => 12,
+            'Rainwsy\\Aliyunmail\\' => 19,
         ),
         'Q' => 
         array (
@@ -217,6 +218,10 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
+        'Rainwsy\\Aliyunmail\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rainwsy/aliyundm/src',
+        ),
         'Qcloud\\Sms\\' => 
         array (
             0 => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src',
@@ -365,6 +370,7 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'App\\ApplyItem' => __DIR__ . '/../..' . '/app/ApplyItem.php',
         'App\\ApplyItemDetail' => __DIR__ . '/../..' . '/app/ApplyItemDetail.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Feedback' => __DIR__ . '/../..' . '/app/Feedback.php',
         'App\\Help' => __DIR__ . '/../..' . '/app/Help.php',
@@ -377,6 +383,7 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'App\\Http\\Controllers\\FeedbackController' => __DIR__ . '/../..' . '/app/Http/Controllers/FeedbackController.php',
         'App\\Http\\Controllers\\HelpController' => __DIR__ . '/../..' . '/app/Http/Controllers/HelpController.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
+        'App\\Http\\Controllers\\MailController' => __DIR__ . '/../..' . '/app/Http/Controllers/MailController.php',
         'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',
         'App\\Http\\Controllers\\SendMegController' => __DIR__ . '/../..' . '/app/Http/Controllers/SendMegController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -3069,6 +3076,12 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'Qcloud\\Sms\\SmsStatusPuller' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsStatusPuller.php',
         'Qcloud\\Sms\\SmsVoicePromptSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsVoicePromptSender.php',
         'Qcloud\\Sms\\SmsVoiceVerifyCodeSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsVoiceVerifyCodeSender.php',
+        'Rainwsy\\Aliyunmail\\Auth' => __DIR__ . '/..' . '/rainwsy/aliyundm/src/Auth.php',
+        'Rainwsy\\Aliyunmail\\Base' => __DIR__ . '/..' . '/rainwsy/aliyundm/src/Base.php',
+        'Rainwsy\\Aliyunmail\\Http\\HttpHelper' => __DIR__ . '/..' . '/rainwsy/aliyundm/src/Http/HttpHelper.php',
+        'Rainwsy\\Aliyunmail\\Http\\HttpResponse' => __DIR__ . '/..' . '/rainwsy/aliyundm/src/Http/HttpResponse.php',
+        'Rainwsy\\Aliyunmail\\Mail\\Batch' => __DIR__ . '/..' . '/rainwsy/aliyundm/src/Send/Batch.php',
+        'Rainwsy\\Aliyunmail\\Send\\Single' => __DIR__ . '/..' . '/rainwsy/aliyundm/src/Send/Single.php',
         'Ramsey\\Uuid\\BinaryUtils' => __DIR__ . '/..' . '/ramsey/uuid/src/BinaryUtils.php',
         'Ramsey\\Uuid\\Builder\\DefaultUuidBuilder' => __DIR__ . '/..' . '/ramsey/uuid/src/Builder/DefaultUuidBuilder.php',
         'Ramsey\\Uuid\\Builder\\DegradedUuidBuilder' => __DIR__ . '/..' . '/ramsey/uuid/src/Builder/DegradedUuidBuilder.php',

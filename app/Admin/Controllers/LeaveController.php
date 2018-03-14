@@ -2,8 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Department;
 use App\Leave;
-
 use App\User;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -12,6 +12,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
+use App\Http\Controllers\MailController;
 
 class LeaveController extends Controller
 {
@@ -258,17 +259,19 @@ class LeaveController extends Controller
                 $form->textarea('apply_reason','请假理由')->rules('required',[
                     'required' => '请假理由禁止为空',
                 ]);;
+                $code = substr(encrypt(strtotime('now')),10,20);
+                $form->hidden('code')->default($code);
 
                 $form->saving(function (Form $form){
+                    $user = Department::where('id',User::department())->firstOrFail();
+                    MailController::sendMail($user['depart_bossEmail'],$form->code);
                     if(is_null($form->apply_department)){
                         $error = new MessageBag([
                                                     'title'   => '错误信息',
                                                     'message' => '请先选择自己的所属部门，<a href="'.url('admin/auth/setting').'">点击前往设置</a>',
                                                 ]);
-
                         return back()->with(compact('error'));
                     }
-
                 });
             }
 

@@ -2501,6 +2501,44 @@
         ]
     },
     {
+        "name": "rainwsy/aliyundm",
+        "version": "dev-stable",
+        "version_normalized": "dev-stable",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rainwsy/aliyundm.git",
+            "reference": "6648abfa1f5e589a8a466dce72bfcf3c15641a5c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/rainwsy/aliyundm/6648abfa1f5e589a8a466dce72bfcf3c15641a5c.zip",
+            "reference": "6648abfa1f5e589a8a466dce72bfcf3c15641a5c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.5"
+        },
+        "time": "2016-08-04T07:31:57+00:00",
+        "type": "package",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Rainwsy\\Aliyunmail\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "rainwsy53",
+                "email": "rain53@vip.qq.com"
+            }
+        ],
+        "description": "a aliyun mail push package"
+    },
+    {
         "name": "ramsey/uuid",
         "version": "3.7.3",
         "version_normalized": "3.7.3.0",

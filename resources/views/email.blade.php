@@ -1,0 +1,1 @@
+请点击链接http://oa.com/mail/leave/{{$code}}
