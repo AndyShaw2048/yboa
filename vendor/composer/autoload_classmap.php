@@ -21,6 +21,7 @@ return array(
     'App\\ApplyItemDetail' => $baseDir . '/app/ApplyItemDetail.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Contact' => $baseDir . '/app/Contact.php',
+    'App\\Department' => $baseDir . '/app/Department.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Feedback' => $baseDir . '/app/Feedback.php',
     'App\\Help' => $baseDir . '/app/Help.php',

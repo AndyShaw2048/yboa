@@ -371,6 +371,7 @@ class ComposerStaticInit26c92cc1925fc66e199d4f1c3d963601
         'App\\ApplyItemDetail' => __DIR__ . '/../..' . '/app/ApplyItemDetail.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Contact' => __DIR__ . '/../..' . '/app/Contact.php',
+        'App\\Department' => __DIR__ . '/../..' . '/app/Department.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Feedback' => __DIR__ . '/../..' . '/app/Feedback.php',
         'App\\Help' => __DIR__ . '/../..' . '/app/Help.php',
