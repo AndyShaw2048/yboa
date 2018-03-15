@@ -1,1 +1,1 @@
-请点击链接http://oa.com/mail/leave/{{$code}}
+请点击链接{{env('APP_URL')}}/mail/leave/{{$code}}
