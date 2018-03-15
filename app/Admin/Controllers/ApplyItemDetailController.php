@@ -71,7 +71,7 @@ class ApplyItemDetailController extends Controller
     protected function grid()
     {
         return Admin::grid(ApplyItemDetail::class, function (Grid $grid) {
-
+            $grid->model()->orderBy('id', 'desc');
             $grid->apply_item_id('编号')->sortable();
             $grid->ApplyItem()->apply_id('申请单位')->display(function ($value) {
                 return User::getRealName($value);
@@ -178,7 +178,7 @@ class ApplyItemDetailController extends Controller
                                                                        '其他处理结果' => '其他处理结果',
                                                                    ]);
                     $form->textarea('accept_1_note', '备注');
-                    $form->hidden('accept_1_time')->default(date("Y-m-d h:i:s", time() + 26800));
+                    $form->hidden('accept_1_time')->default(date("Y-m-d H:i:s", time()));
                 });
 
             });
@@ -201,7 +201,7 @@ class ApplyItemDetailController extends Controller
                                                                        '其他处理结果' => '其他处理结果',
                                                                    ]);
                     $form->textarea('accept_2_note', '备注');
-                    $form->hidden('accept_2_time')->default(date("Y-m-d h:i:s", time() + 26800));
+                    $form->hidden('accept_2_time')->default(date("Y-m-d H:i:s", time()));
                 });
             });
         }
@@ -230,7 +230,7 @@ class ApplyItemDetailController extends Controller
                                                                        '其他处理结果' => '其他处理结果',
                                                                    ]);
                     $form->textarea('accept_3_note', '备注');
-                    $form->hidden('accept_3_time')->default(date("Y-m-d h:i:s", time() + 26800));
+                    $form->hidden('accept_3_time')->default(date("Y-m-d H:i:s", time()));
                 });
             });
         }
@@ -268,7 +268,7 @@ class ApplyItemDetailController extends Controller
                                                                        '其他处理结果' => '其他处理结果',
                                                                    ]);
                     $form->textarea('accept_4_note', '备注');
-                    $form->hidden('accept_4_time')->default(date("Y-m-d h:i:s", time() + 26800));
+                    $form->hidden('accept_4_time')->default(date("Y-m-d H:i:s", time()));
                 });
             });
 

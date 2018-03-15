@@ -70,6 +70,7 @@ class ApplyItemController extends Controller
     protected function grid()
     {
         return Admin::grid(ApplyItem::class, function (Grid $grid) {
+            $grid->model()->orderBy('id', 'desc');
             if(Admin::user()->isRole('college')){
                 $grid->model()->where('apply_id',Admin::user()->id);
                 $grid->disableRowSelector();

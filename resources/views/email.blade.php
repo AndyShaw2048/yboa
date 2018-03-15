@@ -6,7 +6,7 @@
         <strong>你部门现有助理上传电子假条，请及时登录系统进行审核。</strong>
     </p>
     <p>
-        <strong>点击下列链接可进行快速审核：</strong>
+        <strong>点击下列链接可进行快速审核（<span style="color: #c76432;">六小时之内有效</span>）：</strong>
     </p>
     <p>
         <strong>{{env('APP_URL')}}/mail/leave/{{$code}}</strong>

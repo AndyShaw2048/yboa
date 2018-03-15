@@ -63,6 +63,7 @@ class InventoryController extends Controller
     protected function grid()
     {
         return Admin::grid(Inventory::class, function (Grid $grid) {
+            $grid->model()->orderBy('id', 'desc');
             $grid->id('编号');
             $grid->name('名称');
             $grid->image('照片')->image(env('APP_URL').'/uploads/',50,50);

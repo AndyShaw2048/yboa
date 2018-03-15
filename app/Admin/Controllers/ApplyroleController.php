@@ -181,7 +181,7 @@ class ApplyroleController extends Controller
                 '其他处理结果' => '其他处理结果',
             ]);
 
-            $form->hidden('accept_time')->default(date("Y-m-d h:m:s",time()));
+            $form->hidden('accept_time')->default(date("Y-m-d H:i:s",time()));
 
         });
     }

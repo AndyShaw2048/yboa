@@ -77,6 +77,7 @@ class PrizeDocController extends Controller
     protected function grid()
     {
         return Admin::grid(PrizeDoc::class, function (Grid $grid) {
+            $grid->model()->orderBy('id', 'desc');
             if(Admin::user()->isRole('college')){
                 $grid->model()->where('apply_id',Admin::user()->id);
                 $grid->disableExport();
@@ -325,7 +326,7 @@ class PrizeDocController extends Controller
                                                                                    '2' => '其他处理结果',
                                                                                ]);
                         $form->textarea('accept_sum_note','总结书审核备注');
-                        $form->hidden('accept_sum_time')->default(date('Y-m-d h:i:s',time()+43200));
+                        $form->hidden('accept_sum_time')->default(date('Y-m-d H:i:s',time()));
                     }
 
                 });
@@ -387,7 +388,7 @@ class PrizeDocController extends Controller
                             '2' => '其他处理结果',
                                                                         ]);
                     $form->textarea('accept_sum_note','总结书审核备注');
-                    $form->hidden('accept_sum_time')->default(date('Y-m-d h:i:s',time()+43200));
+                    $form->hidden('accept_sum_time')->default(date('Y-m-d H:i:s',time()));
                 }
 
             });

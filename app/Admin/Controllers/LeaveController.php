@@ -81,7 +81,7 @@ class LeaveController extends Controller
     protected function grid()
     {
         return Admin::grid(Leave::class, function (Grid $grid) {
-
+            $grid->model()->orderBy('id', 'desc');
             //干事界面
             $isOfficer = Admin::user()->isRole('officer');
             if($isOfficer)
@@ -125,7 +125,8 @@ class LeaveController extends Controller
 
             //网站管理员界面
             elseif(Admin::user()->inRoles(['administrator','manager'])){
-                $grid->model()->wherenotnull('accept_id');
+                if(Admin::user()->isRole('manager'))
+                    $grid->model()->wherenotnull('accept_id');
                 $grid->id('编号')->sortable();
                 $grid->apply_name('申请人');
                 $grid->apply_contact('联系方式');

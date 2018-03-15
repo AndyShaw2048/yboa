@@ -37,7 +37,8 @@ class MailController extends Controller
         $code = Route::input('code');
         $leave = Leave::where('code',$code)->firstOrFail();
         $diff =strtotime('now') - strtotime($leave['created_at']);
-        if($diff > 86400){
+        //链接过期时间
+        if($diff > 21600){
             $status = 1;
         }
         if($leave['accept_opinion']){

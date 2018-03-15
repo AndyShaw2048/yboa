@@ -67,6 +67,7 @@ class ItemDetailController extends Controller
     protected function grid()
     {
         return Admin::grid(ItemDetail::class, function (Grid $grid) {
+            $grid->model()->orderBy('id', 'desc');
             $grid->id('流水号')->sortable();
             $grid->item_id('物品名称')->display(function($value){
                 $inventory = ApiController::getInventoryList();
@@ -103,7 +104,7 @@ class ItemDetailController extends Controller
             $form->hidden('before')->default(0);
             $form->hidden('operate_id')->default(Admin::user()->id);
             $form->textarea('operate_reason','操作理由');
-            $form->hidden('operate_time')->default(date("Y-m-d h:m:s",time()));
+            $form->hidden('operate_time')->default(date("Y-m-d H:i:s",time()));
             $form->hidden('after')->default(0);
 
             //实现两表同时更新
