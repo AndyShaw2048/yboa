@@ -262,6 +262,7 @@ class LeaveController extends Controller
                 ]);;
                 $code = substr(encrypt(strtotime('now')),10,20);
                 $form->hidden('code')->default($code);
+                $form->hidden('created_time')->default(date("Y-m-d H:i:s"),time());
 
                 $form->saving(function (Form $form){
                     $user = Department::where('id',User::department())->firstOrFail();

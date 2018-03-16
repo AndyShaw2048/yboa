@@ -36,11 +36,12 @@ class MailController extends Controller
         $status = 0;
         $code = Route::input('code');
         $leave = Leave::where('code',$code)->firstOrFail();
-        $diff =strtotime('now') - strtotime($leave['created_at']);
+        $diff =strtotime('now') - strtotime($leave['created_time']);
         //链接过期时间
         if($diff > 21600){
             $status = 1;
         }
+        //是否已审核
         if($leave['accept_opinion']){
             $status = 2;
         }
