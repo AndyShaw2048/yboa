@@ -265,8 +265,6 @@ class LeaveController extends Controller
                 $form->hidden('created_time')->default(date("Y-m-d H:i:s"),time());
 
                 $form->saving(function (Form $form){
-                    $user = Department::where('id',User::department())->firstOrFail();
-                    MailController::sendMail($user['depart_bossEmail'],$form->code);
                     if(is_null($form->apply_department)){
                         $error = new MessageBag([
                                                     'title'   => '错误信息',
@@ -274,6 +272,8 @@ class LeaveController extends Controller
                                                 ]);
                         return back()->with(compact('error'));
                     }
+                    $user = Department::where('id',User::department())->firstOrFail();
+                    MailController::sendMail($user['depart_bossEmail'],$form->code);
                 });
             }
 
