@@ -96,8 +96,9 @@ class ApplyItemController extends Controller
                 }
 
             });
-            $grid->ApplyItemDetail()->accept_1_note('备注')->display(function($value){
-
+            $grid->ApplyItemDetail()->accept_1_note('备注')->display(function($text){
+                $less = str_limit($text, 30, '......');
+                return "<span title='$text'>$less</span>";
             });
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
