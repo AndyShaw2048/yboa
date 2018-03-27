@@ -32,7 +32,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body " style="width:340px">
-    <p class="login-box-msg">{{ trans('admin.login') }}</p>
+    <p class="login-box-msg"><span style="color: #c73300;font-weight: bold">建议使用电脑登录</span></p>
 
     <form action="{{ admin_base_path('auth/login') }}" method="post" style="width: 300px">
       <div class="form-group has-feedback {!! !$errors->has('username') ?: 'has-error' !!}"  style="width: 300px">

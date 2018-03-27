@@ -138,7 +138,7 @@
 <script src="{{url('index2/js/demo-1.js')}}"></script>
 <script>
     var s = window.screen.width;
-    if(s > 460){
+    if(s > 500){
         var element = document.getElementById('help');
         element.style.marginLeft="160px";
     }
