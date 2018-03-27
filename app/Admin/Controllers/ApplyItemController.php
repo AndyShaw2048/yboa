@@ -96,6 +96,9 @@ class ApplyItemController extends Controller
                 }
 
             });
+            $grid->ApplyItemDetail()->accept_1_note('备注')->display(function($value){
+
+            });
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
             });

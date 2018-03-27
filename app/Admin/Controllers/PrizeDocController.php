@@ -121,7 +121,10 @@ class PrizeDocController extends Controller
                 else
                     return '<span style="color: indianred">其它结果</span>';
             });
-            $grid->accept_note('备注');
+            $grid->accept_note('备注')->display(function($text){
+                $less = str_limit($text, 30, '......');
+                return "<span title='$text'>$less</span>";
+            });
         });
     }
 
@@ -139,10 +142,12 @@ class PrizeDocController extends Controller
                 $form->hidden('apply_id')->default(Admin::user()->id);
                 $form->text('activity_name','活动名称')->placeholder('例：xxx学院xxxxx活动');
                 $form->mobile('apply_contact','联系方式')->options(['mask'=>'999 9999 9999'])->help('该联系方式用于短信通知');
-                $form->file('doc_activity','活动计划书')->move('ApplyPrizeDocs')->uniqueName()
+                $form->file('doc_activity','活动计划书')->move('ApplyPrizeDocs')->uniqueName()->rules('mimes:doc,docx,xlsx')
                     ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件4 易班学生工作站活动计划书模版.doc').'" target="_blank">点击下载活动计划书模板</a>');
-                $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName()
-                     ->help('<a href="'.url('/uploads/ApplyPrizeDocs/附件2 西华师范大学易班学生工作站奖品申请表2017.docx').'" target="_blank">点击下载奖品申请表模板</a>');
+                $form->file('doc_prize','奖品申请表')->move('ApplyPrizeDocs')->uniqueName()->rules('mimes:png,jpg,jpeg')
+                     ->help('<span style="color: red;font-weight: bold">请上传图片格式(png,jpg,jpeg)</span>
+                             <br><a href="'.url('/uploads/ApplyPrizeDocs/附件2 西华师范大学易班学生工作站奖品申请表2017.docx').'" target="_blank">点击下载奖品申请表模板</a>
+                     ');
                 $form->file('doc_summary','活动总结书')->move('ApplyPrizeDocs')->uniqueName()->rules('mimes:doc,docx,xlsx')
                      ->help('<span style="color: red;font-weight: bold">留空，活动结束后请于三日内上传</span>');
                 $form->hidden('apply_time')->default(date("Y-m-d h:i:s",time()));
