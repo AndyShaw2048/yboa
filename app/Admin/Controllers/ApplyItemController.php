@@ -94,7 +94,7 @@ class ApplyItemController extends Controller
                         return '<b style="color: #00a4da">审核中</b>';
                     if($r == '线上审核通过')
                         return '<b style="color: #00a65a">通过</b>|<a href="/uploads/ApplyPrizeDocs/附件6 西华师大易班物资借条.doc" target="_blank">点击下载借条模板</a>';
-                    return '<b>'.$r.'</b>';
+                    return '<b style="color: red">'.$r.'</b>';
                 }
             });
 
