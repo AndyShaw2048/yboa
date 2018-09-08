@@ -20,4 +20,5 @@ Route::group([
     $router->resource('prizedoc', PrizeDocController::class);
     $router->resource('pp', PPController::class);
     $router->resource('help', AdminHelpController::class);
+    $router->resource('images', ImageController::class);
 });
